@@ -1,0 +1,100 @@
+/* la page */
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: rgb(255, 250, 245);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+   
+}
+html {
+    scroll-padding-top: 5rem;
+}
+/* le header */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgb(40, 40, 40);
+}
+.bgHeader {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+}
+
+.h_logo a {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    font-size: 30px;
+}
+.h_lien ul {
+   text-align: center;
+}
+.h_lien li {
+    display: inline-block;
+    list-style: none;
+    font-size: 18px;
+    width: 130px;
+}
+.h_lien a {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    transition: background-color 0.4s ease;
+    border-radius: 10px;
+}
+.h_lien a:hover {
+    background-color: rgb(100, 100, 100);
+}
+/* le footer */
+footer {
+    background-color: rgb(200, 200, 200);
+    text-align: center;
+}
+.f_cont {
+    padding-top: 20px;
+}
+/* le body */
+#services {
+    background-color: rgb(230, 230, 230);
+}
+
+#projets {
+    background-color: rgb(200, 200, 200);
+}
+#a_propos {
+    background-color: rgb(230, 230, 230);
+}
+main {
+    margin-top: 200px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+section {
+    padding: 20px 10vw;
+}
+h2 {
+    padding-bottom: 10px;
+}
+#MCV {
+    margin-top: 15px;
+}
+#CV {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: black;
+    transition: background-color 0.4s ease;
+    border-radius: 10px;
+    background-color: rgb(180, 180, 180);
+}
+#CV:hover {
+    background-color: rgb(100, 100, 100);
+}

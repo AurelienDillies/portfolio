@@ -1,0 +1,32 @@
+*, ::before, ::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(255, 250, 245);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+#head {
+    background-color: rgb(40, 40, 40);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+}
+
+#head a {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+    transition: background-color 0.4s ease;
+    border-radius: 10px;
+}
+#head a:hover {
+    background-color: rgb(100, 100, 100);
+}
+
