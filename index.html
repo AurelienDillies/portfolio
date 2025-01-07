@@ -1,78 +1,109 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio Aurélien Dillies</title>
-  <link rel="stylesheet" href="./css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <title>Portfolio Aurélien Dillies</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="./js/main.js" defer></script>
+
+    <link rel="shortcut icon" href="./image/logo-svg.svg" type="image/x-icon">
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' mailto:;">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Découvrez le portfolio d'Aurélien Dillies, développeur web passionné, spécialisé en front-end et back-end.">
+    <meta name="keywords" content="Aurélien Dillies, développeur web, portfolio, front-end, back-end, web design">
+    <meta name="author" content="Aurélien Dillies">
+
+    <!-- Open Graph Meta Tags for social media sharing -->
+    <meta property="og:title" content="Portfolio Aurélien Dillies">
+    <meta property="og:description" content="Découvrez le portfolio d'Aurélien Dillies, développeur web passionné.">
+    <meta property="og:image" content="./image/logo-png.png">
+    <meta property="og:url" content="https://aureliendillies.github.io/portfolio/">
+    <meta property="og:type" content="website">
 </head>
 
-<body id="acceuil">
-  <header>
-    <div class="bgHeader">
-      <div class="h_logo">
-        <a href="#acceuil">
-          <p>Aurélien
-            <br>
-            Dillies
-          </p>
-        </a>
-      </div>
 
-      <nav class="h_lien">
-        <ul>
-          <li><a href="#services">Mes Services</a></li>
-          <li><a href="#projets">Mes Projets</a></li>
-          <li><a href="#a_propos">À Propos</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+<body>
+    <!-- Ajout d'un lien d'évitement -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
 
-    </div>
-  </header>
-
-  <main>
-
-    <section id="services">
-      <h2>Mes Services</h2>
-      <p>regarde c'est du lorem : Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo numquam in alias
-        pariatur totam, nobis esse laborum ea vitae beatae! Eius alias delectus voluptates, inventore quod facilis hic
-        culpa voluptate!
-        Dolorum omnis expedita odio, in iusto quo dolore quis reprehenderit aliquid dolorem velit dolores doloremque
-        nobis amet, eos laudantium animi fugiat dolor rem impedit? Fugiat odio sed repudiandae ipsum officia?</p>
-    </section>
-
-    <section id="projets">
-      <h2>Mes Projets</h2>
-      <p>regarde c'est du lorem : Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo numquam in alias
-        pariatur totam, nobis esse laborum ea vitae beatae! Eius alias delectus voluptates, inventore quod facilis hic
-        culpa voluptate!
-        Dolorum omnis expedita odio, in iusto quo dolore quis reprehenderit aliquid dolorem velit dolores doloremque
-        nobis amet, eos laudantium animi fugiat dolor rem impedit? Fugiat odio sed repudiandae ipsum officia?</p>
-    </section>
-
-    <section id="a_propos">
-      <h2>À Propos</h2>
-      <p>regarde c'est du lorem : Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo numquam in alias
-        pariatur totam, nobis esse laborum ea vitae beatae! Eius alias delectus voluptates, inventore quod facilis hic
-        culpa voluptate!
-        Dolorum omnis expedita odio, in iusto quo dolore quis reprehenderit aliquid dolorem velit dolores doloremque
-        nobis amet, eos laudantium animi fugiat dolor rem impedit? Fugiat odio sed repudiandae ipsum officia?</p>
-        <div id="MCV">
-          <a id="CV" href="./CV.html">Accéder à mon CV</a>  
+    <header role="banner">
+        <div class="bgHeader">
+            <div class="h_logo">
+                <a href="#accueil" aria-label="Retour à l'accueil">
+                    <img src="./image/logo-svg.svg" alt="Logo Aurélien Dillies">
+                </a>
+            </div>
+            <nav class="h_lien" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="#services">Mes Services</a></li>
+                    <li><a href="#projets">Mes Projets</a></li>
+                    <li><a href="#a_propos">À Propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </section>
+    </header>
 
-  </main>
+    <main id="main-content" role="main">
+        <section id="accueil">
+            <h1>Bienvenue sur mon portfolio</h1>
+            <p>Je suis Aurélien Dillies, développeur web passionné.</p>
+        </section>
 
+        <section id="services">
+            <h2>Mes Services</h2>
+            <ul>
+                <li>Développement web front-end</li>
+                <li>Développement web back-end</li>
+                <li>Conception d'interfaces utilisateur</li>
+                <li>Optimisation des performances web</li>
+            </ul>
+        </section>
 
-  <footer id="contact">
-    <div class="f_cont">
-      <h2>Contact</h2>
-      
+        <section id="projets">
+            <h2>Mes Projets</h2>
+            <div class="projet-grid">
+                <!-- Répétez ce bloc pour chaque projet -->
+                <article class="projet">
+                    <h3>Nom du Projet</h3>
+                    <img src="chemin/vers/image.jpg" alt="Aperçu du projet">
+                    <button class="ouvrir-modal" aria-haspopup="dialog">En savoir plus</button>
+                </article>
+                <!-- Fin du bloc projet -->
+            </div>
+        </section>
+
+        <section id="a_propos">
+            <h2>À Propos</h2>
+            <p>Je suis un développeur web passionné par la création d'expériences numériques accessibles et innovantes.</p>
+            <a href="./CV.html" id="CV">Accéder à mon CV</a>
+        </section>
+    </main>
+
+    <footer id="contact" role="contentinfo">
+        <h2>Contact</h2>
+        <ul>
+            <li><a href="https://github.com/AurelienDillies" target="_blank" rel="noopener noreferrer" aria-label="Mon profil GitHub (s'ouvre dans un nouvel onglet)">Mon GitHub</a></li>
+            <li><a href="mailto:aureliendillies2001@gmail.com" onclick="window.location.href='mailto:aureliendillies2001@gmail.com';" aria-label="M'envoyer un email">Mon Email</a></li>
+        </ul>
+    </footer>
+
+    <!-- Modales pour les projets -->
+    <div id="modal-container" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-labelledby="modal-title">
+            <h3 id="modal-title"></h3>
+            <img id="modal-image" src="" alt="">
+            <p id="modal-description"></p>
+            <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer">Voir le projet</a>
+            <button class="fermer-modal" aria-label="Fermer la fenêtre">Fermer</button>
+        </div>
     </div>
-  </footer>
 </body>
-
 </html>
+

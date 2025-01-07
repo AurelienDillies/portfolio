@@ -25,6 +25,7 @@ body {
     color: rgb(230, 230, 230);
     transition: background-color 0.4s ease;
     border-radius: 10px;
+    font-size: 20px;
 }
 #head a:hover {
     background-color: rgb(100, 100, 100);
