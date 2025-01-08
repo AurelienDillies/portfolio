@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "./image/projets/application_dessin.png",
             description: "Une application interactive de dessin en ligne qui permet de créer des dessins librement. Utilise l'API Canvas pour offrir une expérience de dessin fluide avec des fonctionnalités comme le choix des couleurs et la taille du pinceau.",
             technologies: ["HTML5", "CSS3", "JavaScript", "Canvas API"],
-            lien: "./application-dessin/index.html" // Lien local
+            lien: "https://aureliendillies.github.io/application-dessin/" // Lien local
         },
         {
             titre: "Juste Prix",
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "./image/projets/flashlight.png",
             description: "Un effet visuel de lampe torche qui suit le curseur de la souris, créant une expérience interactive unique. Utilise des techniques avancées de CSS pour créer un effet de lumière dynamique.",
             technologies: ["HTML5", "CSS3", "JavaScript"],
-            lien: "./flashlight/index.html" // Lien local
+            lien: "https://aureliendillies.github.io/effet-flashlight/" // Lien local
         }
     ];
 
