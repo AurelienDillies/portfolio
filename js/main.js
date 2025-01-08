@@ -60,7 +60,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModalButtons = document.querySelectorAll('.fermer-modal');
 
     function toggleBodyScroll(isModalOpen) {
-        document.body.style.overflow = isModalOpen ? 'hidden' : '';
+        if (isModalOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
     }
 
     function closeAllModals() {
@@ -78,21 +82,21 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "./image/projets/application_dessin.png",
             description: "Une application interactive de dessin en ligne qui permet de créer des dessins librement. Utilise l'API Canvas pour offrir une expérience de dessin fluide avec des fonctionnalités comme le choix des couleurs et la taille du pinceau.",
             technologies: ["HTML5", "CSS3", "JavaScript", "Canvas API"],
-            lien: "https://aureliendillies.github.io/application-dessin/" // Lien local
+            lien: "https://aureliendillies.github.io/application-dessin/"
         },
         {
             titre: "Juste Prix",
             image: "./image/projets/juste_prix.png",
             description: "Un jeu du Juste Prix où l'utilisateur doit deviner un nombre aléatoire. Inclut des fonctionnalités comme le comptage des essais.",
             technologies: ["HTML5", "CSS3", "JavaScript"],
-            lien: "https://aureliendillies.github.io/juste-prix/" // Lien local
+            lien: "https://aureliendillies.github.io/juste-prix/"
         },
         {
             titre: "Effet de Flashlight",
             image: "./image/projets/flashlight.png",
             description: "Un effet visuel de lampe torche qui suit le curseur de la souris, créant une expérience interactive unique. Utilise des techniques avancées de CSS pour créer un effet de lumière dynamique.",
             technologies: ["HTML5", "CSS3", "JavaScript"],
-            lien: "https://aureliendillies.github.io/effet-flashlight/" // Lien local
+            lien: "https://aureliendillies.github.io/effet-flashlight/"
         }
     ];
 
@@ -100,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
     openModalButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
             const projet = projets[index];
-            const modal = modals[0]; // Utilisation d'une seule modale
+            const modal = modals[0]; 
 
             // Mise à jour du contenu de la modale
             modal.querySelector('#modal-title').textContent = projet.titre;
@@ -175,7 +179,6 @@ const debounce = (func, wait) => {
 
 // Optimisation des événements avec le debouncing
 const scrollHandler = debounce(() => {
-    // Logique de scroll
 }, 16);
 
 // Amélioration des performances avec le lazy loading
@@ -205,4 +208,3 @@ if ('serviceWorker' in navigator) {
         });
     });
 };
-

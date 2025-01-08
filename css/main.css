@@ -105,7 +105,7 @@ section {
 }
 
 .section-content {
-    padding: 0 1rem; /* Ajout du padding horizontal en version mobile */
+    padding: 0 1rem;
     margin: 0 auto;
     width: 100%;
     max-width: 100%;
@@ -143,6 +143,10 @@ h1, h2, h3 {
     border-radius: var(--border-radius);
     padding: 1rem;
     box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .projet h3 {
@@ -165,6 +169,7 @@ h1, h2, h3 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-top: 1rem; 
 }
 
 /* À propos */
@@ -219,28 +224,32 @@ footer a {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
     background-color: rgba(0,0,0,0.4);
+    overflow: hidden; /* Empêche le scroll du background */
 }
 
 .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #fefefe;
-    margin: 10% auto;
     padding: 20px;
-    border: 1px solid #888;
     width: 95%;
+    max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
-    max-width: 600px;
     border-radius: 5px;
-}
-
-.modal img {
-    aspect-ratio: 16/9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .fermer-modal {
-    float: right;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
     background-color: #ff3333;
     color: white;
     border: none;
@@ -250,14 +259,6 @@ footer a {
     font-size: 1rem;
     font-weight: bold;
     transition: background-color 0.3s;
-    margin-bottom: 1rem;
-}
-
-.fermer-modal:hover,
-.fermer-modal:focus {
-    background-color: #cc0000;
-    color: white;
-    text-decoration: none;
 }
 
 /* Ajout de styles pour la modale */
@@ -278,6 +279,40 @@ footer a {
     padding: 0.25rem 0.75rem;
     border-radius: 15px;
     font-size: 0.9rem;
+}
+
+/* Style du lien "Voir projet" dans la modale */
+#modal-link {
+    display: inline-block;
+    background-color: #0066cc;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+#modal-link:hover,
+#modal-link:focus {
+    background-color: #0052a3;
+    text-decoration: none;
+}
+
+#modal-title,
+#modal-image,
+#modal-description,
+.modal-technologies,
+#modal-link {
+    margin: 1rem auto;
+    max-width: 100%;
+}
+
+/* Ajout d'une classe pour bloquer le scroll */
+.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
 }
 
 /* Media Queries - Tablette */
@@ -312,7 +347,7 @@ footer a {
     }
 
     .section-content {
-        padding: 0 2rem; /* Augmentation du padding en version tablette */
+        padding: 0 2rem;
         max-width: 90%;
     }
 }
@@ -395,7 +430,7 @@ img {
 
 /* Utilisation de variables CSS pour une meilleure maintenance */
 :root {
-    --primary-color: #0052a3; /* Assombri pour meilleur contraste */
+    --primary-color: #0052a3; 
     --secondary-color: #333;
     --background-light: rgb(255, 250, 245);
     --background-gray: rgb(230, 230, 230);
@@ -410,8 +445,27 @@ img {
 
 /* Ajout d'optimisations */
 @media print {
-    /* Styles pour l'impression */
     header, footer, .skip-link {
         display: none;
     }
+}
+
+/* Personnalisation de la scrollbar */
+::-webkit-scrollbar {
+    width: 16px; 
+}
+
+::-webkit-scrollbar-track {
+    background: #333;
+    
+}
+
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+    border: 4px solid #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
 }
