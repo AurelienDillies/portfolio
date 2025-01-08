@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Aurélien Dillies</title>
     <link rel="stylesheet" href="./css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +25,30 @@
     <meta property="og:image" content="./image/logo-png.png">
     <meta property="og:url" content="https://aureliendillies.github.io/portfolio/">
     <meta property="og:type" content="website">
+
+    <!-- Ajout de meta tags pour SEO -->
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="7 days">
+    <meta name="theme-color" content="#333333">
+    
+    <!-- Preload des ressources critiques -->
+    <link rel="preload" href="./css/main.css" as="style">
+    <link rel="preload" href="./js/main.js" as="script">
+    <link rel="preload" href="./image/logo-svg.svg" as="image">
+    
+    <!-- Optimisation des polices -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style">
+
+    <!-- Ajout de structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "Aurélien Dillies",
+        "jobTitle": "Développeur Web",
+        "url": "https://aureliendillies.github.io/portfolio/"
+    }
+    </script>
 </head>
 
 
@@ -52,37 +76,62 @@
 
     <main id="main-content" role="main">
         <section id="accueil">
-            <h1>Bienvenue sur mon portfolio</h1>
-            <p>Je suis Aurélien Dillies, développeur web passionné.</p>
+            <div class="section-content">
+                <h1>Bienvenue sur mon portfolio</h1>
+                <p>Je suis Aurélien Dillies, développeur web passionné.</p>
+            </div>
         </section>
 
-        <section id="services">
-            <h2>Mes Services</h2>
-            <ul>
-                <li>Développement web front-end</li>
-                <li>Développement web back-end</li>
-                <li>Conception d'interfaces utilisateur</li>
-                <li>Optimisation des performances web</li>
-            </ul>
+        <section id="services" aria-labelledby="services-title">
+            <div class="section-content">
+                <h2 id="services-title">Mes Services</h2>
+                <ul>
+                    <li>Développement web front-end</li>
+                    <li>Développement web back-end</li>
+                    <li>Conception d'interfaces utilisateur</li>
+                    <li>Optimisation des performances web</li>
+                </ul>
+            </div>
         </section>
 
         <section id="projets">
-            <h2>Mes Projets</h2>
-            <div class="projet-grid">
-                <!-- Répétez ce bloc pour chaque projet -->
-                <article class="projet">
-                    <h3>Nom du Projet</h3>
-                    <img src="chemin/vers/image.jpg" alt="Aperçu du projet">
-                    <button class="ouvrir-modal" aria-haspopup="dialog">En savoir plus</button>
-                </article>
-                <!-- Fin du bloc projet -->
+            <div class="section-content">
+                <h2>Mes Projets</h2>
+                <div class="projet-grid">
+                    <!-- Répétez ce bloc pour chaque projet -->
+                    <article class="projet" role="article" aria-labelledby="projet-title-1">
+                        <h3 id="projet-title-1">Application de Dessin</h3>
+                        <img src="./image/projets/application_dessin.png" alt="Capture d'écran du projet de l'Application de Dessin" loading="lazy" width="300" height="200" decoding="async">
+                        <p>Application de dessin en ligne avec outils de dessin personnalisables.</p>
+                        <button class="ouvrir-modal" aria-haspopup="dialog">En savoir plus</button>
+                    </article>
+
+                    <article class="projet" role="article" aria-labelledby="projet-title-2">
+                        <h3 id="projet-title-2">Juste Prix</h3>
+                        <img src="./image/projets/juste_prix.png" alt="Capture d'écran du projet du juste prix" loading="lazy" width="300" height="200" decoding="async">
+                        <p>Jeu de devinettes interactif avec système de score.</p>
+                        <button class="ouvrir-modal" aria-haspopup="dialog">En savoir plus</button>
+                    </article>
+
+                    <article class="projet" role="article" aria-labelledby="projet-title-3">
+                        <h3 id="projet-title-3">Effet de Flashlight</h3>
+                        <img src="./image/projets/flashlight.png" alt="Capture d'écran du projet d'effet flashlight" loading="lazy" width="300" height="200" decoding="async">
+                        <p>Effet visuel dynamique suivant le curseur de la souris.</p>
+                        <button class="ouvrir-modal" aria-haspopup="dialog">En savoir plus</button>
+                    </article>
+
+            
+                    <!-- Fin du bloc projet -->
+                </div>
             </div>
         </section>
 
         <section id="a_propos">
-            <h2>À Propos</h2>
-            <p>Je suis un développeur web passionné par la création d'expériences numériques accessibles et innovantes.</p>
-            <a href="./CV.html" id="CV">Accéder à mon CV</a>
+            <div class="section-content">
+                <h2>À Propos</h2>
+                <p>Je suis un développeur web passionné par la création d'expériences numériques accessibles et innovantes.</p>
+                <a href="./CV.html" id="CV">Accéder à mon CV</a>
+            </div>
         </section>
     </main>
 
@@ -97,11 +146,15 @@
     <!-- Modales pour les projets -->
     <div id="modal-container" class="modal" aria-hidden="true">
         <div class="modal-content" role="dialog" aria-labelledby="modal-title">
-            <h3 id="modal-title"></h3>
-            <img id="modal-image" src="" alt="">
-            <p id="modal-description"></p>
-            <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer">Voir le projet</a>
             <button class="fermer-modal" aria-label="Fermer la fenêtre">Fermer</button>
+            <h3 id="modal-title"></h3>
+            <img id="modal-image" src="" alt="" loading="lazy" decoding="async">
+            <p id="modal-description"></p>
+            <div class="modal-technologies">
+                <h4>Technologies utilisées :</h4>
+                <ul id="modal-tech-list"></ul>
+            </div>
+            <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer">Voir le projet</a>
         </div>
     </div>
 </body>

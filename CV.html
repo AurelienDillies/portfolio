@@ -3,17 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Aurélien Dillies</title>
+    <meta name="description" content="CV d'Aurélien Dillies - Développeur Web Full Stack">
+    <meta name="robots" content="noindex, follow">
+    
+    <!-- Preload des ressources critiques -->
+    <link rel="preload" href="./css/CV.css" as="style">
+    <link rel="preload" href="./image/logo-svg.svg" as="image">
+    
+    <title>CV - Aurélien Dillies | Développeur Web</title>
+    <link rel="shortcut icon" href="./image/logo-svg.svg" type="image/x-icon">
     <link rel="stylesheet" href="./css/CV.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="./js/main.js" defer></script>
 </head>
 <body>
-    <header id="head">
-        <div class="container">
-            <a href="./index.html">Retour</a>
-            <a href="./image/CV_DILLIES_Aurelien.jpg" target="_blank" download>Télécharger mon CV</a>
+    <!-- Ajout d'un lien d'évitement -->
+    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    
+    <header role="banner">
+        <div class="bgHeader">
+            <div class="h_logo">
+                <a href="#" aria-label="Retour en haut de la page">
+                    <img src="./image/logo-svg.svg" alt="Logo Aurélien Dillies">
+                </a>
+            </div>
+            <nav class="h_lien" aria-label="Navigation principale">
+                <ul>
+                    <li><a href="./index.html">Retour au portfolio</a></li>
+                    <li><a href="./image/CV_DILLIES_Aurelien.jpg" target="_blank" download>Télécharger mon CV</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
+    <main>
 
+    </main>
 </body>
 </html>

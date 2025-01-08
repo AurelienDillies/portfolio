@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Gestion du logo
+    // Gestion du logo sur toutes les pages
     const logoLink = document.querySelector('.h_logo a');
     if (logoLink) {
         logoLink.addEventListener('click', function(e) {
@@ -47,7 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 top: 0,
                 behavior: 'smooth'
             });
-            history.pushState(null, '', window.location.pathname);
+            // Empêcher l'ajout du # dans l'URL
+            if (window.location.hash) {
+                history.pushState("", document.title, window.location.pathname);
+            }
         });
     }
 
@@ -68,10 +71,54 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleBodyScroll(false);
     }
 
+    // Données des projets
+    const projets = [
+        {
+            titre: "Application de Dessin",
+            image: "./image/projets/application_dessin.png",
+            description: "Une application interactive de dessin en ligne qui permet de créer des dessins librement. Utilise l'API Canvas pour offrir une expérience de dessin fluide avec des fonctionnalités comme le choix des couleurs et la taille du pinceau.",
+            technologies: ["HTML5", "CSS3", "JavaScript", "Canvas API"],
+            lien: "https://aureliendillies.github.io/portfolio/application_dessin/"
+        },
+        {
+            titre: "Juste Prix",
+            image: "./image/projets/juste_prix.png",
+            description: "Un jeu du Juste Prix où l'utilisateur doit deviner un nombre aléatoire. Inclut des fonctionnalités comme le comptage des essais.",
+            technologies: ["HTML5", "CSS3", "JavaScript"],
+            lien: "https://aureliendillies.github.io/portfolio/juste_prix/"
+        },
+        {
+            titre: "Effet de Flashlight",
+            image: "./image/projets/flashlight.png",
+            description: "Un effet visuel de lampe torche qui suit le curseur de la souris, créant une expérience interactive unique. Utilise des techniques avancées de CSS pour créer un effet de lumière dynamique.",
+            technologies: ["HTML5", "CSS3", "JavaScript"],
+            lien: "https://aureliendillies.github.io/portfolio/flashlight/"
+        },
+    ];
+
+    // Modification de la gestion des modales
     openModalButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
-            modals[index].style.display = 'block';
-            modals[index].setAttribute('aria-hidden', 'false');
+            const projet = projets[index];
+            const modal = modals[0]; // Utilisation d'une seule modale
+
+            // Mise à jour du contenu de la modale
+            modal.querySelector('#modal-title').textContent = projet.titre;
+            modal.querySelector('#modal-image').src = projet.image;
+            modal.querySelector('#modal-image').alt = `Capture d'écran du projet ${projet.titre}`;
+            modal.querySelector('#modal-description').textContent = projet.description;
+            
+            // Mise à jour des technologies
+            const techList = modal.querySelector('#modal-tech-list');
+            techList.innerHTML = projet.technologies
+                .map(tech => `<li>${tech}</li>`)
+                .join('');
+            
+            modal.querySelector('#modal-link').href = projet.lien;
+
+            // Affichage de la modale
+            modal.style.display = 'block';
+            modal.setAttribute('aria-hidden', 'false');
             toggleBodyScroll(true);
         });
     });
@@ -95,5 +142,57 @@ document.addEventListener('DOMContentLoaded', function() {
             closeAllModals();
         }
     });
+
+    // Intersection Observer pour le lazy loading
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    // Observer les images
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
 });
+
+// Amélioration des performances
+const debounce = (func, wait) => {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+};
+
+// Optimisation des événements avec le debouncing
+const scrollHandler = debounce(() => {
+    // Logique de scroll
+}, 16);
+
+// Amélioration des performances avec le lazy loading
+const lazyLoadImages = () => {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        });
+    });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+};
 

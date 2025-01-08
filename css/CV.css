@@ -1,33 +1,169 @@
-*, ::before, ::after{
+/* Reset et styles de base */
+*, ::before, ::after {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
     background-color: rgb(255, 250, 245);
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    min-height: 100vh;
+    width: 100%;
 }
 
-#head {
-    background-color: rgb(40, 40, 40);
+html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+.bgHeader {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
     align-items: center;
+    padding: 0.5rem;
+}
+
+.h_logo {
     height: 50px;
+    width: 50px;
+    margin-bottom: 1rem;
 }
 
-#head a {
-    padding: 0.5rem 1rem;
+.h_logo img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.h_lien ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    list-style: none;
+}
+
+.h_lien a {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+a {
     text-decoration: none;
-    color: rgb(230, 230, 230);
-    transition: background-color 0.4s ease;
-    border-radius: 10px;
-    font-size: 20px;
-}
-#head a:hover {
-    background-color: rgb(100, 100, 100);
 }
 
+a:hover, a:focus {
+    text-decoration: underline;
+}
+
+/* Modifier le main pour correspondre exactement au style de main.css */
+main {
+    margin-top: 8rem;
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+    .bgHeader {
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .h_logo {
+        margin-bottom: 0;
+    }
+
+    .h_lien ul {
+        gap: 1rem;
+    }
+
+    .h_lien a {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    main {
+        margin-top: 6rem;
+    }
+}
+@media screen and (min-width: 1024px) {
+    .bgHeader {
+        padding: 0.5rem 2rem;
+    }
+
+    .h_logo {
+        height: 60px;
+        width: 60px;
+    }
+
+    .h_lien a {
+        font-size: 1.1rem;
+    }
+
+    main {
+        margin: 7rem auto 2rem;
+    }
+
+    .section-content {
+        max-width: 1200px;
+        padding: 0 2rem;
+    }
+}
+@media (hover: hover) {
+    .h_logo img:hover {
+        transform: scale(1.1);
+    }
+    
+    .h_lien a:hover {
+        background-color: #555;
+    }
+}
+
+/* Optimisations de performance */
+img {
+    width: 100%;
+    height: auto;
+    will-change: transform;
+}
+
+/* Optimisation des animations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Variables CSS */
+:root {
+    --primary-color: #0066cc;
+    --secondary-color: #333;
+    --transition-speed: 0.3s;
+}
