@@ -78,22 +78,22 @@ document.addEventListener('DOMContentLoaded', function() {
             image: "./image/projets/application_dessin.png",
             description: "Une application interactive de dessin en ligne qui permet de créer des dessins librement. Utilise l'API Canvas pour offrir une expérience de dessin fluide avec des fonctionnalités comme le choix des couleurs et la taille du pinceau.",
             technologies: ["HTML5", "CSS3", "JavaScript", "Canvas API"],
-            lien: "https://aureliendillies.github.io/portfolio/application_dessin/"
+            lien: "./application-dessin/index.html" // Lien local
         },
         {
             titre: "Juste Prix",
             image: "./image/projets/juste_prix.png",
             description: "Un jeu du Juste Prix où l'utilisateur doit deviner un nombre aléatoire. Inclut des fonctionnalités comme le comptage des essais.",
             technologies: ["HTML5", "CSS3", "JavaScript"],
-            lien: "https://aureliendillies.github.io/portfolio/juste_prix/"
+            lien: "https://aureliendillies.github.io/juste-prix/" // Lien local
         },
         {
             titre: "Effet de Flashlight",
             image: "./image/projets/flashlight.png",
             description: "Un effet visuel de lampe torche qui suit le curseur de la souris, créant une expérience interactive unique. Utilise des techniques avancées de CSS pour créer un effet de lumière dynamique.",
             technologies: ["HTML5", "CSS3", "JavaScript"],
-            lien: "https://aureliendillies.github.io/portfolio/flashlight/"
-        },
+            lien: "./flashlight/index.html" // Lien local
+        }
     ];
 
     // Modification de la gestion des modales
@@ -180,19 +180,29 @@ const scrollHandler = debounce(() => {
 
 // Amélioration des performances avec le lazy loading
 const lazyLoadImages = () => {
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.removeAttribute('data-src');
-                observer.unobserve(img);
-            }
+    if ('loading' in HTMLImageElement.prototype) {
+        const images = document.querySelectorAll('img[loading="lazy"]');
+        images.forEach(img => {
+            img.src = img.dataset.src;
         });
-    });
+    } else {
+        // Fallback pour les navigateurs qui ne supportent pas lazy loading
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+        document.body.appendChild(script);
+    }
+};
 
-    document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
+// Service Worker pour le cache
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js')
+        .then(registration => {
+            console.log('SW registered');
+        })
+        .catch(err => {
+            console.log('SW failed:', err);
+        });
     });
 };
 

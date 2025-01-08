@@ -12,8 +12,6 @@
 
     <link rel="shortcut icon" href="./image/logo-svg.svg" type="image/x-icon">
 
-    <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' mailto:;">
     <!-- SEO Meta Tags -->
     <meta name="description" content="Découvrez le portfolio d'Aurélien Dillies, développeur web passionné, spécialisé en front-end et back-end.">
     <meta name="keywords" content="Aurélien Dillies, développeur web, portfolio, front-end, back-end, web design">
@@ -34,7 +32,9 @@
     <!-- Preload des ressources critiques -->
     <link rel="preload" href="./css/main.css" as="style">
     <link rel="preload" href="./js/main.js" as="script">
-    <link rel="preload" href="./image/logo-svg.svg" as="image">
+    <link rel="preload" href="./image/logo-svg.svg" as="image" fetchpriority="high">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     
     <!-- Optimisation des polices -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style">
@@ -119,7 +119,6 @@
                         <p>Effet visuel dynamique suivant le curseur de la souris.</p>
                         <button class="ouvrir-modal" aria-haspopup="dialog">En savoir plus</button>
                     </article>
-
             
                     <!-- Fin du bloc projet -->
                 </div>
@@ -141,6 +140,13 @@
             <li><a href="https://github.com/AurelienDillies" target="_blank" rel="noopener noreferrer" aria-label="Mon profil GitHub (s'ouvre dans un nouvel onglet)">Mon GitHub</a></li>
             <li><a href="mailto:aureliendillies2001@gmail.com" onclick="window.location.href='mailto:aureliendillies2001@gmail.com';" aria-label="M'envoyer un email">Mon Email</a></li>
         </ul>
+        <h3>&copy;<span>Active Javascript !</span></h3>
+        <script>
+        const copyright = document.querySelector('footer span');
+        const date = new Date();
+        copyright.textContent = date.getFullYear();
+        </script>
+      
     </footer>
 
     <!-- Modales pour les projets -->
@@ -154,7 +160,7 @@
                 <h4>Technologies utilisées :</h4>
                 <ul id="modal-tech-list"></ul>
             </div>
-            <a id="modal-link" href="#" target="_blank" rel="noopener noreferrer">Voir le projet</a>
+            <a id="modal-link" href="" target="_blank" rel="noopener noreferrer">Voir le projet</a>
         </div>
     </div>
 </body>

@@ -153,6 +153,8 @@ h1, h2, h3 {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
+    aspect-ratio: 16/9;
+    content-visibility: auto;
 }
 
 .ouvrir-modal {
@@ -231,6 +233,10 @@ footer a {
     overflow-y: auto;
     max-width: 600px;
     border-radius: 5px;
+}
+
+.modal img {
+    aspect-ratio: 16/9;
 }
 
 .fermer-modal {
@@ -369,6 +375,12 @@ img {
     width: 100%;
     height: auto;
     will-change: transform;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .projet {
+        view-transition-name: projet;
+    }
 }
 
 /* Optimisation des animations */
