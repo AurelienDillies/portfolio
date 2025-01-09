@@ -39,7 +39,7 @@ html {
 header {
     background-color: #333;
     color: #fff;
-    padding: 0.5rem;
+    padding: min(0.5rem, 2vw);
     position: fixed;
     width: 100%;
     top: 0;
@@ -53,13 +53,13 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.5rem;
+    padding: min(0.5rem, 2vw);
 }
 
 .h_logo {
-    height: 50px;
-    width: 50px;
-    margin-bottom: 1rem;
+    height: clamp(25px, 8vw, 100px);
+    width: clamp(25px, 8vw, 100px);
+    margin-bottom: clamp(0.2rem, 1vw, 1rem);
 }
 
 .h_logo img {
@@ -73,16 +73,18 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
+    gap: clamp(0.1rem, 0.3vw, 0.5rem);
     list-style: none;
+    padding: clamp(0.1rem, 0.3vw, 0.5rem);
 }
 
 .h_lien a {
-    font-size: 0.9rem;
-    padding: 0.5rem;
+    font-size: clamp(0.4rem, 2vw, 1.1rem);
+    padding: clamp(0.1rem, 0.3vw, 0.5rem);
     color: #fff;
     border-radius: var(--border-radius);
     transition: all var(--transition-speed) ease;
+    white-space: nowrap;
 }
 
 a {
@@ -95,7 +97,7 @@ a:hover, a:focus {
 
 /* Main content - Mobile first */
 main {
-    margin-top: 8rem;
+    margin-top: clamp(9rem, 20vw, 14rem);
     width: 100%;
 }
 
@@ -105,9 +107,9 @@ section {
 }
 
 .section-content {
-    padding: 0 1rem;
+    padding: clamp(var(--min-padding), 2vw, 2rem);
     margin: 0 auto;
-    width: 100%;
+    width: min(98%, 1600px);
     max-width: 100%;
 }
 
@@ -121,16 +123,51 @@ section {
 
 h1, h2, h3 {
     margin-bottom: 1rem;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    padding: clamp(0.2rem, 1vw, 1rem);
+}
+
+h1 {
+    font-size: clamp(1rem, 4vw, 2.5rem);
+}
+
+h2 {
+    font-size: clamp(0.9rem, 3.5vw, 2rem);
+}
+
+h3 {
+    font-size: clamp(0.8rem, 3vw, 1.5rem);
+}
+
+p {
+    font-size: clamp(0.7rem, 2.5vw, 1rem);
 }
 
 /* Services */
 #services ul {
     list-style-type: none;
+    display: grid;
+    gap: min(2rem, 4vw);
+    padding: min(1rem, 4vw);
 }
 
 #services li {
-    margin-bottom: 0.5rem;
+    background-color: #fff;
+    padding: clamp(0.35rem, 2vw, 1.5rem);
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+#services h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
 /* Projets */
 .projet-grid {
     display: grid;
@@ -141,7 +178,7 @@ h1, h2, h3 {
 .projet {
     background-color: #fff;
     border-radius: var(--border-radius);
-    padding: 1rem;
+    padding: clamp(0.2rem, 2vw, 1.5rem);
     box-shadow: var(--box-shadow);
     display: flex;
     flex-direction: column;
@@ -165,22 +202,43 @@ h1, h2, h3 {
     background-color: #0066cc;
     color: #fff;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: clamp(0.2rem, 1vw, 1rem);
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
     margin-top: 1rem; 
+    font-size: clamp(0.5rem, 1.5vw, 1rem);
 }
 
 /* À propos */
+#a_propos ul {
+    list-style-type: none;
+    margin: 1.5rem 0;
+    display: grid;
+    gap: 1rem;
+}
+
+#a_propos li {
+    background-color: #fff;
+    padding: clamp(0.2rem, 2vw, 1.5rem);
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#a_propos li h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
 #CV {
     display: inline-block;
     background-color: #0066cc;
     color: #fff;
-    padding: 0.5rem 1rem;
+    padding: clamp(0.2rem, 1vw, 1rem);
     border-radius: 5px;
     margin-top: 1rem;
     transition: background-color 0.3s;
+    font-size: clamp(0.5rem, 1.5vw, 1rem);
 }
 
 #CV:hover, #CV:focus {
@@ -194,7 +252,7 @@ h1, h2, h3 {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 2rem 0;
+    padding: min(2rem, 6vw) 0;
     text-align: center;
     width: 100%;
 }
@@ -234,8 +292,8 @@ footer a {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fefefe;
-    padding: 20px;
-    width: 95%;
+    padding: clamp(0.5rem, 2vw, 20px);
+    width: min(98%, calc(100% - 10px));
     max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
@@ -248,15 +306,15 @@ footer a {
 
 .fermer-modal {
     position: absolute;
-    right: 1rem;
-    top: 1rem;
+    right: clamp(0.2rem, 1vw, 1rem);
+    top: clamp(0.2rem, 1vw, 1rem);
     background-color: #ff3333;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: clamp(0.2rem, 1vw, 0.5rem);
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: clamp(0.8rem, 2vw, 1rem);
     font-weight: bold;
     transition: background-color 0.3s;
 }
@@ -287,25 +345,6 @@ footer a {
     background-color: #0066cc;
     color: #fff;
     padding: 0.5rem 1rem;
-    border-radius: 5px;
-    margin-top: 1rem;
-    transition: background-color 0.3s;
-    text-decoration: none;
-}
-
-#modal-link:hover,
-#modal-link:focus {
-    background-color: #0052a3;
-    text-decoration: none;
-}
-
-#modal-title,
-#modal-image,
-#modal-description,
-.modal-technologies,
-#modal-link {
-    margin: 1rem auto;
-    max-width: 100%;
 }
 
 /* Ajout d'une classe pour bloquer le scroll */
@@ -338,7 +377,7 @@ footer a {
     }
 
     main {
-        margin-top: 6rem;
+        margin-top: clamp(7rem, 10vw, 9rem);
     }
 
     .projet-grid {
@@ -350,6 +389,14 @@ footer a {
         padding: 0 2rem;
         max-width: 90%;
     }
+
+    #services ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #a_propos ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Media Queries - Desktop */
@@ -359,8 +406,8 @@ footer a {
     }
 
     .h_logo {
-        height: 60px;
-        width: 60px;
+        height: 100px;  /* Augmenté de 60px à 100px */
+        width: 100px;   /* Augmenté de 60px à 100px */
     }
 
     .h_lien a {
@@ -368,7 +415,7 @@ footer a {
     }
 
     main {
-        margin: 7rem auto 2rem;
+        margin-top: clamp(8rem, 11vw, 10rem);
     }
 
     .projet-grid {
@@ -382,6 +429,10 @@ footer a {
 
     .section-content {
         padding: 0 2rem;
+    }
+
+    #services ul {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -441,6 +492,90 @@ img {
     --header-height: 8rem;
     --header-height-tablet: 6rem;
     --header-height-desktop: 7rem;
+    /* Ajout de nouvelles variables pour la typographie */
+    --min-font-size-h1: 0.9rem;
+    --max-font-size-h1: 3.5rem;
+    --min-font-size-h2: 0.8rem;
+    --max-font-size-h2: 2.8rem;
+    --min-font-size-h3: 0.7rem;
+    --max-font-size-h3: 2rem;
+    --min-font-size-p: 0.6rem;
+    --max-font-size-p: 1.2rem;
+    --min-padding: 0.2rem;
+}
+
+/* Typography optimisations */
+h1 {
+    font-size: clamp(var(--min-font-size-h1), 6vw, var(--max-font-size-h1));
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: clamp(var(--min-font-size-h2), 5vw, var(--max-font-size-h2));
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: clamp(var(--min-font-size-h3), 4vw, var(--max-font-size-h3));
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+p {
+    font-size: clamp(var(--min-font-size-p), 3vw, var(--max-font-size-p));
+    line-height: 1.6;
+}
+
+/* Ajustement des espacements */
+.section-content {
+    width: min(95%, 1600px);
+    padding: clamp(1rem, 3vw, 3rem);
+    margin: 0 auto;
+}
+
+/* Services et À propos */
+#services li, #a_propos li, .projet {
+    padding: clamp(1rem, 3vw, 2.5rem);
+    margin-bottom: clamp(0.5rem, 1.5vw, 2rem);
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: none; /* Désactive la césure automatique */
+}
+
+.projet h3, #services h3, #a_propos li h3 {
+    font-size: clamp(0.7rem, 3vw, 1.8rem);
+    margin: clamp(0.3rem, 1vw, 1rem) 0;
+}
+
+/* Suppression des propriétés globales */
+h1, h2, h3, p {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: none; /* Désactive la césure automatique */
+}
+
+/* Suppression des propriétés globales */
+#services li, #a_propos li, .projet {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: none; /* Désactive la césure automatique */
+}
+
+/* Suppression des propriétés globales */
+.projet h3, #services h3, #a_propos li h3 {
+    font-size: clamp(0.7rem, 3vw, 1.8rem);
+    margin: clamp(0.3rem, 1vw, 1rem) 0;
+}
+
+/* Suppression des propriétés globales */
+.projet-grid, #services ul, #a_propos ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: clamp(0.2rem, 2vw, 2rem);
 }
 
 /* Ajout d'optimisations */
@@ -450,14 +585,13 @@ img {
     }
 }
 
-/* Personnalisation de la scrollbar */
+/* Personnalisation de la scrollbar pour WebKit (Chrome, Safari) */
 ::-webkit-scrollbar {
     width: 16px; 
 }
 
 ::-webkit-scrollbar-track {
     background: #333;
-    
 }
 
 ::-webkit-scrollbar-thumb {
@@ -468,4 +602,76 @@ img {
 
 ::-webkit-scrollbar-thumb:hover {
     background: #777;
+}
+
+/* Personnalisation de la scrollbar pour Firefox */
+@-moz-document url-prefix() {
+    * {
+        scrollbar-width: auto;
+        scrollbar-color: #bbb #333;
+    }
+}
+
+/* Gestion globale du texte */
+h1, h2, h3, p, #services li, #a_propos li {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: keep-all;
+    hyphens: none;
+}
+
+/* Services, À propos et Projets - Layout commun */
+.projet-grid, #services ul, #a_propos ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+}
+
+#services li, #a_propos li, .projet {
+    background-color: #fff;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Gestion des très petits écrans (128px - 350px) */
+@media screen and (max-width: 350px) {
+    .h_logo {
+        height: clamp(20px, 6vw, 40px);
+        width: clamp(20px, 6vw, 40px);
+    }
+
+    .h_lien a {
+        font-size: clamp(0.35rem, 1.5vw, 0.7rem);
+        padding: clamp(0.1rem, 0.3vw, 0.3rem);
+    }
+
+    .section-content {
+        padding: 0.5rem;
+    }
+
+    .projet-grid, #services ul, #a_propos ul {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    #services li, #a_propos li, .projet {
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    h1 { font-size: clamp(0.7rem, 3vw, 1rem); }
+    h2 { font-size: clamp(0.6rem, 2.5vw, 0.9rem); }
+    h3 { font-size: clamp(0.5rem, 2vw, 0.8rem); }
+    p { font-size: clamp(0.4rem, 2vw, 0.7rem); }
+
+    .ouvrir-modal, #CV {
+        padding: 0.3rem 0.6rem;
+        font-size: clamp(0.4rem, 1.5vw, 0.7rem);
+    }
 }
