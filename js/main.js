@@ -162,7 +162,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
     });
-});
+
+
 
 // Amélioration des performances
 const debounce = (func, wait) => {
@@ -196,15 +197,20 @@ const lazyLoadImages = () => {
     }
 };
 
-// Service Worker pour le cache
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-        .then(registration => {
-            console.log('SW registered');
-        })
-        .catch(err => {
-            console.log('SW failed:', err);
+    // Service Worker pour le cache
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js') // Assurez-vous que le chemin est correct
+            .then(registration => {
+                console.log('SW registered:', registration);
+            })
+            .catch(err => {
+                console.log('SW failed:', err);
+            });
         });
-    });
-};
+    }
+});
+
+const copyright = document.querySelector('footer span');
+const date = new Date();
+copyright.textContent = date.getFullYear();
