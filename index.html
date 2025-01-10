@@ -149,7 +149,7 @@
                     </li>
                     <li>
                         <h3>Technologies Back-end</h3>
-                        <p>PHP, SQL. Développement de serveurs robustes et création de bases de données optimisées.</p>
+                        <p>PHP, SQL, Symfony. Développement de serveurs robustes et création de bases de données optimisées.</p>
                     </li>
                     <li>
                         <h3>Outils de Développement</h3>
@@ -163,16 +163,32 @@
                 <a href="./CV.html" id="CV">Accéder à mon CV</a>
             </div>
         </section>
+
     </main>
 
-    <footer id="contact" role="contentinfo">
-        <h2>Contact</h2>
-        <ul>
-            <li><a href="https://github.com/AurelienDillies" target="_blank" rel="noopener noreferrer" aria-label="Mon profil GitHub (s'ouvre dans un nouvel onglet)">Mon GitHub</a></li>
-            <li><a href="mailto:aureliendillies2001@gmail.com" onclick="window.location.href='mailto:aureliendillies2001@gmail.com';" aria-label="M'envoyer un email">Mon Email</a></li>
-        </ul>
-        <h4>&copy; Copyright <span>year</span>, Aurélien Dillies Tout droit réserver</h3>
+    <footer id="footer" role="contentinfo">
+        <div class="section-content">
+            <h2>Contact</h2>
+            <ul>
+                <li>
+                    <a href="https://github.com/AurelienDillies" target="_blank" rel="noopener noreferrer" aria-label="Mon profil GitHub (s'ouvre dans un nouvel onglet)">
+                        Mon GitHub
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:aureliendillies2001@gmail.com" onclick="window.location.href='mailto:aureliendillies2001@gmail.com';" aria-label="M'envoyer un email">
+                        Mon Email
+                    </a>
+                </li>
+            </ul>
+            <h3>&copy; <span id="current-year"></span>, Aurélien Dillies. Tous droits réservés.</h3>
+        </div>
     </footer>
+
+    <script>
+        // Mise à jour de l'année dans le footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
 
     <!-- Modales pour les projets -->
     <div id="modal-container" class="modal" aria-hidden="true">

@@ -210,7 +210,3 @@ const lazyLoadImages = () => {
         });
     }
 });
-
-const copyright = document.querySelector('footer span');
-const date = new Date();
-copyright.textContent = date.getFullYear();

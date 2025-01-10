@@ -279,9 +279,24 @@ p {
 footer {
     background-color: #333;
     color: #fff;
-    padding: min(2rem, 6vw) 0;
-    text-align: center;
+    padding: 2rem 5rem;
     width: 100%;
+}
+
+footer .section-content {
+    margin: 0 auto;
+    padding: clamp(var(--min-padding), 2vw, 2rem);
+    width: min(95%, 1600px); /* Alignement avec les autres sections */
+}
+
+footer h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(var(--min-font-size-h2), 5vw, var(--max-font-size-h2))
+}
+
+footer h3 {
+    text-align: center;
+    font-size: clamp(0.8rem, 2.5vw, 1.5rem);
 }
 
 footer ul {
@@ -289,7 +304,6 @@ footer ul {
     padding: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 1rem;
 }
 
@@ -299,7 +313,13 @@ footer li {
 
 footer a {
     color: #fff;
+    text-decoration: none;
 }
+
+footer a:hover, footer a:focus {
+    text-decoration: underline;
+}
+
 /* Modal */
 .modal {
     display: none;
@@ -380,6 +400,8 @@ footer a {
     position: fixed;
     width: 100%;
 }
+
+/* Suppression des styles pour la section "Contact" */
 
 /* Media Queries - Tablette */
 @media screen and (min-width: 768px) {
