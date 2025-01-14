@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const headerHeight = getHeaderHeight();
                 smoothScroll(targetElement, headerHeight);
                 history.pushState(null, '', `#${targetId}`);
+                updateActiveLink();
             }
         });
     });
@@ -51,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (window.location.hash) {
                 history.pushState("", document.title, window.location.pathname);
             }
+            updateActiveLink();
         });
     }
 
@@ -163,50 +165,36 @@ document.addEventListener('DOMContentLoaded', function() {
         imageObserver.observe(img);
     });
 
+    // Fonction pour mettre à jour les liens actifs
+    function updateActiveLink() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.h_lien a');
 
+        let currentSectionId = '';
 
-// Amélioration des performances
-const debounce = (func, wait) => {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-};
-
-// Optimisation des événements avec le debouncing
-const scrollHandler = debounce(() => {
-}, 16);
-
-// Amélioration des performances avec le lazy loading
-const lazyLoadImages = () => {
-    if ('loading' in HTMLImageElement.prototype) {
-        const images = document.querySelectorAll('img[loading="lazy"]');
-        images.forEach(img => {
-            img.src = img.dataset.src;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - getHeaderHeight();
+            if (window.scrollY >= sectionTop - 2) {
+                currentSectionId = section.getAttribute('id');
+            }
         });
-    } else {
-        // Fallback pour les navigateurs qui ne supportent pas lazy loading
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-        document.body.appendChild(script);
-    }
-};
 
-    // Service Worker pour le cache
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js') // Assurez-vous que le chemin est correct
-            .then(registration => {
-                console.log('SW registered:', registration);
-            })
-            .catch(err => {
-                console.log('SW failed:', err);
-            });
+        // Vérifier si l'utilisateur est en bas de la page
+        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
+            currentSectionId = 'contact'; // Assurez-vous que l'ID est correct
+        }
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').substring(1) === currentSectionId) {
+                link.classList.add('active');
+            }
         });
     }
+
+    // Appel initial pour définir le lien actif
+    updateActiveLink();
+
+    // Mise à jour des liens actifs lors du défilement
+    window.addEventListener('scroll', updateActiveLink);
 });
