@@ -5,12 +5,49 @@
     padding: 0;
 }
 
+/* Variables CSS */
+:root {
+    --primary-color: #0066cc;
+    --secondary-color: #333;
+    --background-light: rgb(255, 250, 245);
+    --border-radius: 5px;
+    --transition-speed: 0.3s;
+}
+
+/* Personnalisation de la scrollbar pour WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 16px; 
+}
+
+::-webkit-scrollbar-track {
+    background: #333;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 10px;
+    border: 4px solid #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+/* Personnalisation de la scrollbar pour Firefox */
+@-moz-document url-prefix() {
+    * {
+        scrollbar-width: auto;
+        scrollbar-color: #bbb #333;
+    }
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: rgb(255, 250, 245);
+    background-color: var(--background-light);
     width: 100%;
+    font-size: clamp(1rem, 2.5vw, 1.2rem); 
 }
 
 html {
@@ -18,30 +55,28 @@ html {
     -webkit-overflow-scrolling: touch;
 }
 
+/* Header - Mobile first */
 header {
     background-color: #333;
     color: #fff;
-    padding: 0.5rem;
+    padding: min(0.5rem, 2vw);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: transform;
 }
 
 .bgHeader {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0.5rem;
+    padding: min(0.5rem, 2vw);
 }
 
 .h_logo {
-    height: 50px;
-    width: 50px;
-    margin-bottom: 1rem;
+    height: clamp(25px, 8vw, 100px);
+    width: clamp(25px, 8vw, 100px);
+    margin-bottom: clamp(0.2rem, 1vw, 1rem);
 }
 
 .h_logo img {
@@ -55,37 +90,44 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.5rem;
+    gap: clamp(0.1rem, 0.3vw, 0.5rem);
     list-style: none;
+    padding: clamp(0.1rem, 0.3vw, 0.5rem);
 }
 
 .h_lien a {
-    font-size: 0.9rem;
-    padding: 0.5rem;
+    font-size: clamp(0.6rem, 3vw, 1.2rem); 
+    padding: clamp(0.3rem, 1vw, 0.8rem);
     color: #fff;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    border-radius: var(--border-radius);
+    transition: transform 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.h_lien a:hover, .h_lien a.active, .h_lien ul li.active{
+    background-color: #555;
+    text-decoration: underline;
+    transform: scale(1.1);
 }
 
 a {
     text-decoration: none;
 }
+.h_logo img:hover {
+    transform: scale(1.1);
+}
 
-a:hover, a:focus {
+.h_lien a:hover {
+    background-color: #555;
     text-decoration: underline;
 }
-
-/* Modifier le main pour correspondre exactement au style de main.css */
-main {
-    margin-top: 8rem;
-    width: 100%;
-    min-height: calc(100vh - 100px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+.h_lien ul li:hover {
+    transform: scale(1.1);
 }
 
+/* Media Queries - Tablette */
 @media screen and (min-width: 768px) {
     .bgHeader {
         flex-direction: row;
@@ -106,41 +148,34 @@ main {
         font-size: 1rem;
         padding: 0.5rem 1rem;
     }
-
-    main {
-        margin-top: 6rem;
-    }
 }
+
+/* Media Queries - Desktop */
 @media screen and (min-width: 1024px) {
     .bgHeader {
         padding: 0.5rem 2rem;
     }
 
     .h_logo {
-        height: 60px;
-        width: 60px;
+        height: 100px;
+        width: 100px;
     }
 
     .h_lien a {
         font-size: 1.1rem;
     }
-
-    main {
-        margin: 7rem auto 2rem;
-    }
-
-    .section-content {
-        max-width: 1200px;
-        padding: 0 2rem;
-    }
 }
-@media (hover: hover) {
-    .h_logo img:hover {
-        transform: scale(1.1);
+
+/* Gestion des très petits écrans */
+@media screen and (max-width: 220px) {
+    .h_logo {
+        height: clamp(20px, 6vw, 40px);
+        width: clamp(20px, 6vw, 40px);
     }
-    
-    .h_lien a:hover {
-        background-color: #555;
+
+    .h_lien a {
+        font-size: clamp(0.5rem, 2vw, 1rem); 
+        padding: clamp(0.3rem, 1vw, 0.8rem); 
     }
 }
 
@@ -159,31 +194,4 @@ img {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-}
-
-/* Variables CSS */
-:root {
-    --primary-color: #0066cc;
-    --secondary-color: #333;
-    --transition-speed: 0.3s;
-}
-
-/* Personnalisation de la scrollbar */
-::-webkit-scrollbar {
-    width: 16px; 
-}
-
-::-webkit-scrollbar-track {
-    background: #333;
-    
-}
-
-::-webkit-scrollbar-thumb {
-    background: #999;
-    border-radius: 10px;
-    border: 4px solid #333;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #777;
 }
