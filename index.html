@@ -53,10 +53,26 @@
 
 
 <body>
-    <!-- Ajout d'un lien d'évitement -->
-    <a href="#main-content" class="skip-link">Aller au contenu principal</a>
+    <div class="intro">
+        <div class="content">
+            <div class="square twitch">
+                <span class="one" ></span>
+                <span class="two"></span>
+                <span class="three"></span>
+                <div class="circle">
+                    <h2 class="middle">Aurélien Dillies</h2>
+                    <p>Developpeur Full-Stack</p>
+                </div>
+            </div>
 
-    <header role="banner">
+            <a href="#" class="button reveal-site" target="_parent">
+                <span class="actual-text">&nbsp;Portfolio&nbsp;</span>
+                <span class="hover-text" aria-hidden="true">&nbsp;Portfolio&nbsp;</span>
+            </a>
+        </div>
+    </div>
+
+    <header role="banner" style="display: none;">
         <div class="bgHeader">
             <div class="h_logo">
                 <a href="#accueil" aria-label="Retour à l'accueil">
@@ -74,7 +90,7 @@
         </div>
     </header>
 
-    <main id="main-content" role="main">
+    <main id="main-content" role="main" style="display: none;">
         <section id="accueil">
             <div class="section-content">
                 <h1>Bienvenue sur mon portfolio</h1>
@@ -166,7 +182,7 @@
 
     </main>
 
-    <footer id="contact" role="contentinfo"> 
+    <footer id="contact" role="contentinfo" style="display: none;"> 
         <div class="section-content">
             <h2>Contact</h2>
             <ul>

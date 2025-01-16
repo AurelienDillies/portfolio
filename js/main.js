@@ -165,6 +165,16 @@ document.addEventListener('DOMContentLoaded', function() {
         imageObserver.observe(img);
     });
 
+    // Révéler le site lorsque l'on clique sur le lien du portfolio
+    document.querySelector('.reveal-site').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector('.intro').style.display = 'none';
+        document.querySelector('header').style.display = 'block';
+        document.querySelector('main').style.display = 'block';
+        document.querySelector('footer').style.display = 'block';
+        updateActiveLink(); // Mise à jour des liens actifs
+    });
+
     // Fonction pour mettre à jour les liens actifs
     function updateActiveLink() {
         const sections = document.querySelectorAll('section');
@@ -181,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Vérifier si l'utilisateur est en bas de la page
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
-            currentSectionId = 'contact'; // Assurez-vous que l'ID est correct
+            currentSectionId = 'contact';
         }
 
         navLinks.forEach(link => {
