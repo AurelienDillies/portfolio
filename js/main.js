@@ -207,4 +207,61 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Mise à jour des liens actifs lors du défilement
     window.addEventListener('scroll', updateActiveLink);
+
+    // Carrousel automatique
+    const carouselContainer = document.querySelector('.carousel-container');
+    const carouselSlide = document.querySelector('.carousel-slide');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    let currentIndex = 0;
+
+    function showNextSlide() {
+        currentIndex = (currentIndex + 1) % carouselItems.length;
+        const offset = -currentIndex * 100;
+        carouselSlide.style.transform = `translateX(${offset}%)`;
+    }
+
+    setInterval(showNextSlide, 2000);
+});
+
+// Suppression de la gestion des indicateurs
+class TechCarousel {
+    constructor() {
+        this.container = document.querySelector('.carousel-slides');
+        this.slides = document.querySelectorAll('.carousel-slide');
+        this.currentSlide = 0;
+        this.slideInterval = null;
+        
+        this.init();
+    }
+
+    init() {
+        // Initialiser le carrousel
+        this.showSlide(0);
+        this.startAutoSlide();
+    }
+
+    showSlide(index) {
+        this.currentSlide = index;
+        const offset = -index * 100;
+        this.container.style.transform = `translateX(${offset}%)`;
+    }
+
+    nextSlide() {
+        const next = (this.currentSlide + 1) % this.slides.length;
+        this.showSlide(next);
+    }
+
+    startAutoSlide() {
+        this.slideInterval = setInterval(() => this.nextSlide(), 4000);
+    }
+
+    resetAutoSlide() {
+        clearInterval(this.slideInterval);
+        this.startAutoSlide();
+    }
+}
+
+// Initialiser le carrousel quand le DOM est chargé
+document.addEventListener('DOMContentLoaded', () => {
+    new TechCarousel();
 });

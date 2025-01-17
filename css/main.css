@@ -95,7 +95,7 @@ html {
     align-items: center;
 }
 
-.content h1{
+.content h2{
     font-size: 45px;
     color: #fff;
     font-weight: 400;
@@ -189,11 +189,6 @@ z-index: 1000;
 
 .square:hover{
 color: white;
-}
-
-.content:hover {
-
-color: #ffffff;
 }
 
 @keyframes animate {
@@ -291,9 +286,55 @@ a {
     transform: scale(1.1);
 }
 
+/* acceuil */
+
+#accueil {
+    position: relative;
+    min-height: 100vh; /* Ajustement de la hauteur */
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centrer horizontalement */
+    align-items: center; /* Centrer verticalement */
+    background: url('../image/dev.jpg') center/cover no-repeat; /* Ajustement pour occuper tout l'écran */
+    overflow: hidden;
+    margin: 0;
+}
+
+#accueil .section-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+    text-align: center;
+    padding: 2.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+#accueil h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+#accueil p {
+    font-size: 1.4rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    color: #fff;
+    font-weight: 300;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
 /* Main content - Mobile first */
 main {
-    margin-top: clamp(9rem, 20vw, 14rem);
+    margin-top: 120px;
     width: 100%;
 }
 
@@ -307,6 +348,10 @@ section {
     margin: 0 auto;
     width: min(98%, 1600px);
     max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 #services, #a_propos {
@@ -478,6 +523,93 @@ p {
 #CV:focus {
     transform: scale(1.1);
 }
+
+/* carousel */
+
+.technologies-carousel {
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel-slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.tech-image {
+    flex: 0 0 200px;
+}
+
+.tech-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.tech-description {
+    flex: 1;
+}
+
+.tech-description h4 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--accent-color);
+}
+
+.carousel-indicators {
+    display: none;
+}
+
+/* Ajustement du responsive */
+@media (max-width: 768px) {
+    .carousel-slide {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tech-image {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-slide {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .tech-image {
+        margin-bottom: 1rem;
+        flex: 0 0 150px;
+    }
+
+    .tech-description h4 {
+        font-size: 1.2rem;
+    }
+
+    .tech-description p {
+        font-size: 0.9rem;
+    }
+}
+
 /* Footer */
 footer {
     background-color: #333;
@@ -680,10 +812,6 @@ img {
         padding: 0.5rem 1rem;
     }
 
-    main {
-        margin-top: clamp(7rem, 10vw, 9rem);
-    }
-
     .projet-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
@@ -703,7 +831,7 @@ img {
 
     .square {
         max-width: 300px;
-        height: 300px; /* Taille fixe pour éviter la déformation */
+        height: 300px;
     }
 
     .circle {
@@ -721,6 +849,43 @@ img {
     .button {
         font-size: 1.5em;
     }
+
+    #accueil {
+        min-height: 60vh;
+    }
+
+    #accueil .section-content {
+        min-height: 60vh;
+        padding: 2rem;
+        justify-content: center;
+    }
+
+    #accueil .intro-text {
+        text-align: center;
+        padding: 2rem;
+    }
+
+    #accueil h1 {
+        font-size: 2.8rem;
+    }
+
+    .carousel-slide {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tech-image {
+        margin-bottom: 1rem;
+    }
+
+    .carousel-slide {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tech-image {
+        margin-bottom: 1rem;
+    }
 }
 
 /* Media Queries - Desktop */
@@ -736,10 +901,6 @@ img {
 
     .h_lien a {
         font-size: 1.1rem;
-    }
-
-    main {
-        margin-top: clamp(8rem, 11vw, 10rem);
     }
 
     .projet-grid {
@@ -761,7 +922,7 @@ img {
 
     .square {
         max-width: 400px;
-        height: 400px; /* Taille fixe pour éviter la déformation */
+        height: 400px; 
     }
 
     .circle {
@@ -778,6 +939,28 @@ img {
 
     .button {
         font-size: 2em;
+    }
+
+    #accueil {
+        min-height: 70vh;
+    }
+
+    #accueil .section-content {
+        min-height: 70vh;
+        padding: 2rem 3rem;
+    }
+
+    #accueil h1 {
+        font-size: 3.5rem;
+    }
+
+    .carousel-slide {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tech-image {
+        margin-bottom: 1rem;
     }
 }
 
@@ -852,7 +1035,7 @@ img {
 
     .square {
         max-width: 200px;
-        height: 200px; /* Taille fixe pour éviter la déformation */
+        height: 200px;
     }
 
     .circle {
@@ -870,7 +1053,47 @@ img {
     .button {
         font-size: 1.2em;
     }
-}
+    #accueil {
+        min-height: 50vh;
+    }
+
+    #accueil .section-content {
+        min-height: 50vh;
+        padding: 1.5rem 1rem;
+    }
+
+    #accueil .intro-text {
+        padding: 1.5rem;
+    }
+
+    #accueil h1 {
+        font-size: 2.2rem;
+    }
+
+    #accueil p {
+        font-size: 1rem;
+    }
+
+    .carousel-slide {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .tech-image {
+        margin-bottom: 1rem;
+        flex: 0 0 150px;
+    }
+
+    .tech-description h4 {
+        font-size: 1.2rem;
+    }
+
+    .tech-description p {
+        font-size: 0.9rem;
+    }
+    
+    }
 
 @media (prefers-reduced-motion: no-preference) {
     .projet {
@@ -892,7 +1115,7 @@ img {
 @media screen and (max-width: 767px) {
     .square {
         max-width: 200px;
-        height: 200px; /* Taille fixe pour éviter la déformation */
+        height: 200px;
     }
 
     .circle {
