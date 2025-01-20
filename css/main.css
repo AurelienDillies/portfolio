@@ -8,26 +8,6 @@
 :root {
     --primary-color: #0052a3; 
     --secondary-color: #333;
-    --background-light: rgb(255, 250, 245);
-    --background-gray: rgb(230, 230, 230);
-    --background-dark: rgb(200, 200, 200);
-    --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    --border-radius: 5px;
-    --transition-speed: 0.3s;
-    --header-height: 80px;
-    --header-height-tablet: 60px;
-    --header-height-desktop: 7rem;
-    --header-height-mobile: 50px;
-    --min-font-size-h1: 0.9rem;
-    --max-font-size-h1: 3.5rem;
-    --min-font-size-h2: 0.8rem;
-    --max-font-size-h2: 2.8rem;
-    --min-font-size-h3: 0.7rem;
-    --max-font-size-h3: 2rem;
-    --min-font-size-p: 0.6rem;
-    --max-font-size-p: 1.2rem;
-    --min-padding: 0.2rem;
-    --border-right: 6px;
     --text-stroke-color: rgba(255,255,255,0.6);
     --animation-color:rgb(20, 36, 50);
 }
@@ -164,7 +144,7 @@ html {
     color: var(--animation-color);
     width: 0%;
     inset: 0;
-    border-right: var(--border-right) solid var(--animation-color);
+    border-right: 6px solid var(--animation-color);
     overflow: hidden;
     transition: 0.5s;
     -webkit-text-stroke: 1px var(--animation-color);
@@ -285,7 +265,7 @@ main {
     font-size: clamp(0.6rem, 3vw, 1.2rem); 
     padding: clamp(0.3rem, 1vw, 0.8rem);
     color: #fff;
-    border-radius: var(--border-radius);
+    border-radius: 5px;
     transition: transform 0.3s ease;
     white-space: nowrap;
     position: relative;
@@ -317,12 +297,12 @@ a {
 
 #accueil {
     position: relative;
-    min-height: 90vh; /* Ajustement de la hauteur */
+    min-height: 90vh;
     width: 100%;
     display: flex;
-    justify-content: center; /* Centrer horizontalement */
-    align-items: center; /* Centrer verticalement */
-    background: url('../image/dev.jpg') center/cover no-repeat; /* Ajustement pour occuper tout l'écran */
+    justify-content: center;
+    align-items: center;
+    background: url('../image/dev.jpg') center/cover no-repeat;
     overflow: hidden;
     margin: 0;
 }
@@ -366,7 +346,7 @@ section {
 }
 
 .section-content {
-    padding: clamp(var(--min-padding), 2vw, 2rem);
+    padding: clamp(0.2rem, 2vw, 2rem);
     margin: 0 auto;
     width: min(98%, 1600px);
     max-width: 100%;
@@ -377,11 +357,11 @@ section {
 }
 
 #services, #a_propos {
-    background-color: var(--background-gray);
+    background-color: rgb(230, 230, 230);
 }
 
 #projets, #accueil {
-    background-color: var(--background-dark);
+    background-color: rgb(200, 200, 200);
 }
 
 h1, h2, h3, h4 {
@@ -450,9 +430,9 @@ p {
 
 .projet {
     background-color: #fff;
-    border-radius: var(--border-radius);
+    border-radius: 5px;
     padding: clamp(0.2rem, 2vw, 1.5rem);
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -605,8 +585,8 @@ p {
 }
 
 .tech-image {
-    flex: 0 0 200px; /* Taille fixe pour les images */
-    max-width: 200px; /* Taille maximale pour les images */
+    flex: 0 0 200px;
+    max-width: 200px;
     height: auto;
 }
 
@@ -651,7 +631,7 @@ footer {
 
 footer .section-content {
     margin: 0 auto;
-    padding: clamp(var(--min-padding), 2vw, 2rem);
+    padding: clamp(0.2rem, 2vw, 2rem);
     width: min(98%, 1600px); 
     max-width: 100%;
     display: flex;
@@ -820,186 +800,6 @@ img {
     height: auto;
     will-change: transform;
 }
-/* Media Queries - Tablette */
-@media screen and (min-width: 768px) {
-    .bgHeader {
-        flex-direction: row;
-        justify-content: space-between;
-        max-width: 90%;
-        margin: 0 auto;
-    }
-
-    .h_logo {
-        margin-bottom: 0;
-    }
-
-    .h_lien ul {
-        gap: 1rem;
-    }
-
-    .h_lien a {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-    }
-
-    .projet-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-
-    .section-content {
-        padding: 0 2rem;
-        max-width: 90%;
-    }
-    #services ul {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    #a_propos ul {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .square {
-        max-width: 300px;
-        height: 300px;
-    }
-
-    .circle {
-        padding: 30px 40px;
-    }
-
-    .middle {
-        font-size: clamp(1rem, 3vw, 2rem);
-    }
-
-    .content p {
-        font-size: clamp(0.8rem, 2vw, 1rem);
-    }
-
-    .button {
-        font-size: 1.5em;
-    }
-
-    #accueil .section-content {
-        min-height: 60vh;
-        padding: 2rem;
-        justify-content: center;
-    }
-
-    #accueil .intro-text {
-        text-align: center;
-        padding: 2rem;
-    }
-
-    #accueil h1 {
-        font-size: 2.8rem;
-    }
-
-    .carousel-slide {
-        flex-direction: column;
-        text-align: center;
-        padding: 1.5rem;
-    }
-
-    .tech-description {
-        text-align: center;
-    }
-
-    .tech-image {
-        flex: 0 0 150px; /* Taille fixe pour les images */
-        max-width: 150px; /* Taille maximale pour les images */
-        margin-bottom: 1rem;
-    }
-
-    .tech-description p {
-        text-align: center;
-    }
-
-    .content h2 {
-        font-size: 2rem; /* Réduction de la taille du h2 dans l'intro */
-    }
-}
-
-/* Media Queries - Desktop */
-@media screen and (min-width: 1024px) {
-    .bgHeader {
-        padding: 0.5rem 2rem;
-    }
-
-    .h_logo {
-        height: 100px;
-        width: 100px;
-    }
-
-    .h_lien a {
-        font-size: 1.1rem;
-    }
-
-    .projet-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-
-    section {
-        padding: 3rem 0;
-    }
-
-    .section-content {
-        padding: 0 2rem;
-    }
-
-    #services ul {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .square {
-        max-width: 400px;
-        height: 400px; 
-    }
-
-    .circle {
-        padding: 40px 60px;
-    }
-
-    .middle {
-        font-size: clamp(1.5rem, 5vw, 3rem);
-    }
-
-    .content p {
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
-    }
-
-    .button {
-        font-size: 2em;
-    }
-
-    #accueil .section-content {
-        min-height: 70vh;
-        padding: 2rem 3rem;
-    }
-
-    #accueil h1 {
-        font-size: 3.5rem;
-    }
-
-    .carousel-slide {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .tech-image {
-        margin-bottom: 1rem;
-    }
-}
-
-/* Media Queries - Large Desktop */
-@media screen and (min-width: 1440px) {
-    .projet-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin: 0 auto;
-    }
-}
 
 /* Gestion des très petits écrans */
 @media screen and (max-width: 220px) {
@@ -1118,11 +918,26 @@ img {
         font-size: 0.9rem;
     }
     
+}
+
+/* Media Queries - Mobile */
+@media screen and (max-width: 480px) {
+    .carousel-slide {
+        padding: 1rem;
     }
 
-@media (prefers-reduced-motion: no-preference) {
-    .projet {
-        view-transition-name: projet;
+    .tech-image {
+        flex: 0 0 100px;
+        max-width: 100px;
+    }
+
+    .tech-description h4 {
+        font-size: clamp(1rem, 5vw, 1.3rem);
+        margin-bottom: 0.5rem;
+    }
+
+    .tech-description p {
+        font-size: clamp(0.8rem, 4vw, 0.9rem);
     }
 }
 
@@ -1150,91 +965,45 @@ img {
     }
 }
 
-/* Media Queries - Mobile */
-@media screen and (max-width: 480px) {
+/* Media Queries - Tablette */
+@media screen and (min-width: 768px) {
     .bgHeader {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 90%;
+        margin: 0 auto;
     }
 
     .h_logo {
-        margin-bottom: 1rem;
+        margin-bottom: 0;
     }
 
     .h_lien ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .h_lien a {
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem;
-    }
-
-    .section-content {
-        padding: 1rem;
-    }
-
-    .projet-grid {
-        grid-template-columns: 1fr;
         gap: 1rem;
     }
 
-    .projet {
-        padding: 1rem;
+    .h_lien a {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
     }
 
-    .carousel-slide {
-        padding: 1rem;
+    .projet-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
-    .tech-image {
-        flex: 0 0 100px; /* Taille fixe pour les images */
-        max-width: 100px; /* Taille maximale pour les images */
+    .section-content {
+        padding: 0 2rem;
+        max-width: 90%;
+    }
+    #services ul {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .tech-description h4 {
-        font-size: clamp(1rem, 5vw, 1.3rem);
-        margin-bottom: 0.5rem;
+    #a_propos ul {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .tech-description p {
-        font-size: clamp(0.8rem, 4vw, 0.9rem);
-    }
-       .square {
-        max-width: 200px;
-        height: 200px;
-    }
-
-    .circle {
-        padding: 20px 30px;
-    }
-
-    .middle {
-        font-size: clamp(1rem, 3vw, 2rem);
-    }
-
-    .content p {
-        font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-    }
-
-    .button {
-        font-size: 1.2em;
-    }
-}
-
-/* Optimisation des animations */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* Media Queries pour l'intro et le main */
-@media screen and (max-width: 768px) {
     .square {
         width: clamp(180px, 50vw, 300px);
     }
@@ -1254,30 +1023,140 @@ img {
     .content p {
         font-size: clamp(0.9rem, 1.8vw, 1.1rem);
     }
+
+    #accueil .section-content {
+        min-height: 60vh;
+        padding: 2rem;
+        justify-content: center;
+    }
+
+    #accueil .intro-text {
+        text-align: center;
+        padding: 2rem;
+    }
+
+    #accueil h1 {
+        font-size: 2.8rem;
+    }
+
+    .carousel-slide {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .tech-description {
+        text-align: center;
+    }
+
+    .tech-image {
+        flex: 0 0 150px;
+        max-width: 150px; 
+        margin-bottom: 1rem;
+    }
+
+    .tech-description p {
+        text-align: center;
+    }
+
+    .content h2 {
+        font-size: 2rem;
+    }
 }
 
-@media screen and (max-width: 480px) {
+/* Media Queries - Desktop */
+@media screen and (min-width: 1024px) {
+    .bgHeader {
+        padding: 0.5rem 2rem;
+    }
+
+    .h_logo {
+        height: 100px;
+        width: 100px;
+    }
+
+    .h_lien a {
+        font-size: 1.1rem;
+    }
+
+    .projet-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    section {
+        padding: 3rem 0;
+    }
+
+    .section-content {
+        padding: 0 2rem;
+    }
+
+    #services ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .square {
-        width: min(90vw, 280px);
+        max-width: 400px;
+        height: 400px; 
     }
 
     .circle {
-        width: 85%;
-        height: 85%;
-        padding: clamp(0.3rem, 1.5vw, 1rem);
+        padding: 40px 60px;
     }
 
     .middle {
-        font-size: clamp(0.9rem, 4vw, 1.5rem);
-        margin-bottom: 0.3rem;
+        font-size: clamp(1.5rem, 5vw, 3rem);
     }
 
     .content p {
-        font-size: clamp(0.6rem, 2.5vw, 0.9rem);
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
     }
 
     .button {
-        font-size: clamp(1rem, 2.5vw, 1.5rem);
-        margin-top: 1rem;
+        font-size: 2em;
+    }
+
+    #accueil .section-content {
+        min-height: 70vh;
+        padding: 2rem 3rem;
+    }
+
+    #accueil h1 {
+        font-size: 3.5rem;
+    }
+
+    .carousel-slide {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tech-image {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Media Queries - Large Desktop */
+@media screen and (min-width: 1440px) {
+    .projet-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin: 0 auto;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .projet {
+        view-transition-name: projet;
+    }
+}
+
+/* Optimisation des animations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }

@@ -10,8 +10,6 @@
     --primary-color: #0066cc;
     --secondary-color: #333;
     --background-light: rgb(255, 250, 245);
-    --border-radius: 5px;
-    --transition-speed: 0.3s;
 }
 
 /* Personnalisation de la scrollbar pour WebKit (Chrome, Safari) */
@@ -99,7 +97,7 @@ header {
     font-size: clamp(0.6rem, 3vw, 1.2rem); 
     padding: clamp(0.3rem, 1vw, 0.8rem);
     color: #fff;
-    border-radius: var(--border-radius);
+    border-radius: 5px;
     transition: transform 0.3s ease;
     white-space: nowrap;
     position: relative;
