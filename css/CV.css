@@ -179,6 +179,58 @@ a {
     }
 }
 
+/* Ajustement du responsive */
+@media (max-width: 768px) {
+    .bgHeader {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .h_logo {
+        margin-bottom: 1rem;
+    }
+
+    .h_lien ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .h_lien a {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bgHeader {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .h_logo {
+        margin-bottom: 1rem;
+    }
+
+    .h_lien ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .h_lien a {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    #cv-section .section-content {
+        padding: 1rem;
+    }
+
+    #cv-section img {
+        width: 100%;
+        height: auto;
+    }
+}
+
 /* Optimisations de performance */
 img {
     width: 100%;

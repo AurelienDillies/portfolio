@@ -14,9 +14,10 @@
     --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     --border-radius: 5px;
     --transition-speed: 0.3s;
-    --header-height: 8rem;
-    --header-height-tablet: 6rem;
+    --header-height: 80px;
+    --header-height-tablet: 60px;
     --header-height-desktop: 7rem;
+    --header-height-mobile: 50px;
     --min-font-size-h1: 0.9rem;
     --max-font-size-h1: 3.5rem;
     --min-font-size-h2: 0.8rem;
@@ -62,7 +63,7 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: var(--background-light);
+    background-color: var(--secondary-color);
     width: 100%;
     font-size: clamp(1rem, 2.5vw, 1.2rem); 
 }
@@ -71,40 +72,63 @@ html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
-/* entrée sur la page */
+/* Styles de l'intro */
 .intro {
     width: 100%;
     min-height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     background: linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%);
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: clamp(1rem, 3vw, 2rem);
 }
 
-.content{
-    width: 100%;
-    max-width: 1200px;
-    padding: 2rem;
+.content {
+    width: min(95%, 1200px);
+    padding: clamp(1rem, 3vw, 2rem);
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
 }
 
-.content h2{
-    font-size: 45px;
+.square {
+    position: relative;
+    width: clamp(200px, 60vw, 400px);
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+.circle {
+    padding: clamp(1rem, 4vw, 2.5rem);
+    text-align: center;
+    transition: 0.5s;
+    z-index: 1000;
+}
+
+.middle {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    color: #fff;
+}
+
+.content h2 {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
     color: #fff;
     font-weight: 400;
-    margin-bottom: 20px;
+    margin-bottom: clamp(0.5rem, 2vw, 1.2rem);
 }
 
-.content p{
-    font-size: clamp(1rem, 2.5vw, 1.2rem);
+.content p {
+    font-size: clamp(1rem, 2vw, 1.4rem);
     color: #fff;
+    max-width: 80ch;
+    margin: 0 auto;
 }
 
 .button {
@@ -115,7 +139,7 @@ html {
     border: none;
     letter-spacing: 3px;
     text-decoration: none;
-    font-size: clamp(1rem, 2.5vw, 2em);
+    font-size: clamp(1.2rem, 3vw, 2rem);
     position: relative;
     text-transform: uppercase;
     color: transparent;
@@ -140,38 +164,27 @@ html {
     filter: drop-shadow(0 0 23px var(--animation-color));
 }
 
-.square {
-position: relative;
-margin: 0 auto 50px;
-width: 100%;
-max-width: 400px;
-height: 400px; /* Taille fixe pour éviter la déformation */
-display: flex;
-justify-content: center;
-align-items: center;
-}
-
 .square .one, .square .two, .square .three {
-position: absolute;
-width: 100%;
-height: 100%;
-border: 2px solid black;
-transition: 0.5s;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    transition: 0.5s;
 }
 
 .square .one {
-border-radius: 32% 58% 69% 43% / 48% 32% 59% 55%;
-animation: animate 6s linear infinite;
+    border-radius: 32% 58% 69% 43% / 48% 32% 59% 55%;
+    animation: animate 6s linear infinite;
 }
 
 .square .two {
-border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
-animation: animate 6s linear infinite;
+    border-radius: 38% 62% 63% 37% / 41% 44% 56% 59%;
+    animation: animate 6s linear infinite;
 }
 
 .square .three {
-border-radius: 31% 45% 74% 35% / 38% 56% 51% 37%;
-animation: animate2 10s linear infinite;
+    border-radius: 31% 45% 74% 35% / 38% 56% 51% 37%;
+    animation: animate2 10s linear infinite;
 }
 
 .twitch:hover .one, .twitch:hover .two, .twitch:hover .three {
@@ -179,16 +192,8 @@ animation: animate2 10s linear infinite;
     background:rgb(20, 36, 50);;
 }
 
-.circle {
-position: relative;
-padding: 40px 60px;
-text-align: center;
-transition: 0.5s;
-z-index: 1000;
-}
-
 .square:hover{
-color: white;
+    color: white;
 }
 
 @keyframes animate {
@@ -207,29 +212,40 @@ color: white;
     100% {
         transform: rotate(0deg);
     }
-
 }
 
-.middle{
-    font-size: clamp(1.5rem, 5vw, 3rem);
-}
-
-/* Header - Mobile first */
+/* Header */
 header {
     background-color: #333;
     color: #fff;
     padding: min(0.5rem, 2vw);
-    position: fixed;
-    width: 100%;
+    position: sticky;
     top: 0;
+    width: 100%;
     z-index: 1000;
+    transition: background-color 0.3s ease;
 }
 
+/* Ajout d'une classe pour le header quand on scroll */
+header.scrolled {
+    background-color: rgba(51, 51, 51, 0.95);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Main content */
+main {
+    width: 100%;
+}
+
+/* Reste du header */
 .bgHeader {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: min(0.5rem, 2vw);
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .h_logo {
@@ -333,11 +349,6 @@ a {
 }
 
 /* Main content - Mobile first */
-main {
-    margin-top: 120px;
-    width: 100%;
-}
-
 section {
     width: 100%;
     padding: 2rem 0;
@@ -525,17 +536,25 @@ p {
 }
 
 /* carousel */
-
 .technologies-carousel {
+    width: 100%;
     margin: 2rem 0;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
+    text-align: center;
+}
+
+.technologies-carousel h3 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .carousel-container {
     position: relative;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -543,71 +562,55 @@ p {
 .carousel-slides {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    width: 100%;
 }
 
 .carousel-slide {
     min-width: 100%;
     display: flex;
     align-items: center;
-    padding: 2rem;
-    gap: 2rem;
+    padding: clamp(1rem, 3vw, 2rem);
+    gap: clamp(1rem, 3vw, 2rem);
+    background: #fff; /* Fond blanc */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Ajout du même shadow */
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tech-image {
-    flex: 0 0 200px;
+    flex: 0 0 200px; /* Taille fixe pour les images */
+    max-width: 200px; /* Taille maximale pour les images */
+    height: auto;
 }
 
 .tech-image img {
     width: 100%;
     height: auto;
     object-fit: contain;
+    border-radius: 8px;
 }
 
 .tech-description {
     flex: 1;
+    text-align: left;
 }
 
 .tech-description h4 {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    color: var(--primary-color);
+}
+
+.tech-description p {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--secondary-color);
     margin-bottom: 1rem;
-    font-size: 1.5rem;
-    color: var(--accent-color);
+    opacity: 1;
 }
 
 .carousel-indicators {
     display: none;
-}
-
-/* Ajustement du responsive */
-@media (max-width: 768px) {
-    .carousel-slide {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .tech-image {
-        margin-bottom: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .carousel-slide {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
-    }
-
-    .tech-image {
-        margin-bottom: 1rem;
-        flex: 0 0 150px;
-    }
-
-    .tech-description h4 {
-        font-size: 1.2rem;
-    }
-
-    .tech-description p {
-        font-size: 0.9rem;
-    }
 }
 
 /* Footer */
@@ -872,19 +875,25 @@ img {
     .carousel-slide {
         flex-direction: column;
         text-align: center;
+        padding: 1.5rem;
     }
 
-    .tech-image {
-        margin-bottom: 1rem;
-    }
-
-    .carousel-slide {
-        flex-direction: column;
+    .tech-description {
         text-align: center;
     }
 
     .tech-image {
+        flex: 0 0 150px; /* Taille fixe pour les images */
+        max-width: 150px; /* Taille maximale pour les images */
         margin-bottom: 1rem;
+    }
+
+    .tech-description p {
+        text-align: center;
+    }
+
+    .content h2 {
+        font-size: 2rem; /* Réduction de la taille du h2 dans l'intro */
     }
 }
 
@@ -1101,16 +1110,6 @@ img {
     }
 }
 
-/* Optimisation des animations */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
 /* Gestion des très petits écrans */
 @media screen and (max-width: 767px) {
     .square {
@@ -1132,5 +1131,134 @@ img {
 
     .button {
         font-size: 1.2em;
+    }
+}
+
+/* Media Queries - Mobile */
+@media screen and (max-width: 480px) {
+    .bgHeader {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .h_logo {
+        margin-bottom: 1rem;
+    }
+
+    .h_lien ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .h_lien a {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .section-content {
+        padding: 1rem;
+    }
+
+    .projet-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .projet {
+        padding: 1rem;
+    }
+
+    .carousel-slide {
+        padding: 1rem;
+    }
+
+    .tech-image {
+        flex: 0 0 100px; /* Taille fixe pour les images */
+        max-width: 100px; /* Taille maximale pour les images */
+    }
+
+    .tech-description h4 {
+        font-size: clamp(1rem, 5vw, 1.3rem);
+        margin-bottom: 0.5rem;
+    }
+
+    .tech-description p {
+        font-size: clamp(0.8rem, 4vw, 0.9rem);
+    }
+       .square {
+        max-width: 200px;
+        height: 200px;
+    }
+
+    .circle {
+        padding: 20px 30px;
+    }
+
+    .middle {
+        font-size: clamp(1rem, 3vw, 2rem);
+    }
+
+    .content p {
+        font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+    }
+
+    .button {
+        font-size: 1.2em;
+    }
+}
+
+/* Optimisation des animations */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Media Queries pour l'intro et le main */
+@media screen and (max-width: 768px) {
+    .square {
+        width: clamp(180px, 50vw, 300px);
+    }
+
+    .circle {
+        padding: clamp(0.8rem, 3vw, 1.5rem);
+    }
+
+    .content {
+        gap: clamp(1rem, 3vw, 2rem);
+    }
+
+    .content h2 {
+        font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    .content p {
+        font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .square {
+        width: clamp(150px, 40vw, 200px);
+    }
+
+    .circle {
+        padding: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .content h2 {
+        font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    .content p {
+        font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+    }
+
+    .button {
+        font-size: clamp(1rem, 2.5vw, 1.5rem);
+        margin-top: 1rem;
     }
 }

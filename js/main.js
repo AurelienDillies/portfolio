@@ -221,6 +221,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     setInterval(showNextSlide, 2000);
+
+    const header = document.querySelector('header');
+    const scrollThreshold = 100; // Nombre de pixels à scroller avant l'effet
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > scrollThreshold) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 });
 
 // Suppression de la gestion des indicateurs
