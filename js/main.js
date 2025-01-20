@@ -233,47 +233,61 @@ document.addEventListener('DOMContentLoaded', function() {
         constructor() {
             this.container = document.querySelector('.carousel-slides');
             this.slides = document.querySelectorAll('.carousel-slide');
-            this.currentSlide = 0;
+            this.currentSlide = 1;
             this.isTransitioning = false;
+            this.transitionDuration = 500;
             
-            // Clone optimisé
-            this.container.appendChild(this.slides[0].cloneNode(true));
+            // Cloner le premier et le dernier slide
+            const firstSlideClone = this.slides[0].cloneNode(true);
+            const lastSlideClone = this.slides[this.slides.length - 1].cloneNode(true);
             
+            this.container.appendChild(firstSlideClone);
+            this.container.insertBefore(lastSlideClone, this.slides[0]);
+            
+            // Position initiale
+            this.updatePosition(this.currentSlide, false);
             this.init();
         }
 
         init() {
-            this.showSlide(0);
             this.startAutoSlide();
+        }
+
+        updatePosition(index, useTransition = true) {
+            if (useTransition) {
+                this.container.style.transition = `transform ${this.transitionDuration}ms ease-in-out`;
+            } else {
+                this.container.style.transition = 'none';
+            }
+            this.container.style.transform = `translateX(-${index * 100}%)`;
         }
 
         showSlide(index) {
             if (this.isTransitioning) return;
-            
             this.isTransitioning = true;
             this.currentSlide = index;
-            
-            requestAnimationFrame(() => {
-                this.container.style.transform = `translateX(-${index * 100}%)`;
-                
-                if (index === this.slides.length) {
-                    setTimeout(() => {
-                        this.container.style.transition = 'none';
-                        this.container.style.transform = 'translateX(0)';
-                        this.currentSlide = 0;
-                        requestAnimationFrame(() => {
-                            this.container.style.transition = 'transform 0.5s ease-in-out';
-                        });
-                    }, 500);
+
+            this.updatePosition(index);
+
+            const handleTransitionEnd = () => {
+                if (index === this.slides.length + 1) {
+                    this.currentSlide = 1;
+                    this.updatePosition(this.currentSlide, false);
+                } else if (index === 0) {
+                    this.currentSlide = this.slides.length;
+                    this.updatePosition(this.currentSlide, false);
                 }
                 
-                setTimeout(() => this.isTransitioning = false, 500);
-            });
+                this.isTransitioning = false;
+                this.container.removeEventListener('transitionend', handleTransitionEnd);
+            };
+
+            this.container.addEventListener('transitionend', handleTransitionEnd);
         }
 
         startAutoSlide() {
             setInterval(() => {
-                if (!document.hidden) {
+                if (!document.hidden && !this.isTransitioning) {
                     this.showSlide(this.currentSlide + 1);
                 }
             }, 4000);
