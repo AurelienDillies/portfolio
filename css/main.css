@@ -80,55 +80,66 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: clamp(1rem, 3vw, 2rem);
+    padding: clamp(0.5rem, 2vw, 2rem);
 }
 
 .content {
     width: min(95%, 1200px);
-    padding: clamp(1rem, 3vw, 2rem);
+    padding: clamp(0.5rem, 2vw, 2rem);
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: clamp(1.5rem, 4vw, 3rem);
+    gap: clamp(1rem, 3vw, 3rem);
 }
 
 .square {
     position: relative;
-    width: clamp(200px, 60vw, 400px);
+    width: min(85vw, 400px);
     aspect-ratio: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: clamp(1rem, 3vw, 2rem);
+    margin-bottom: clamp(0.5rem, 2vw, 2rem);
 }
 
 .circle {
-    padding: clamp(1rem, 4vw, 2.5rem);
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: clamp(0.5rem, 2vw, 2.5rem);
     text-align: center;
     transition: 0.5s;
     z-index: 1000;
 }
 
 .middle {
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    font-size: clamp(1rem, 5vw, 3rem);
+    margin-bottom: clamp(0.3rem, 1vw, 1rem);
     color: #fff;
+    word-wrap: break-word;
+    max-width: 100%;
 }
 
 .content h2 {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-size: clamp(1rem, 4vw, 2.8rem);
     color: #fff;
     font-weight: 400;
-    margin-bottom: clamp(0.5rem, 2vw, 1.2rem);
+    margin-bottom: clamp(0.3rem, 1vw, 1.2rem);
+    word-wrap: break-word;
+    max-width: 100%;
 }
 
 .content p {
-    font-size: clamp(1rem, 2vw, 1.4rem);
+    font-size: clamp(0.7rem, 3vw, 1.4rem);
     color: #fff;
-    max-width: 80ch;
+    max-width: 100%;
     margin: 0 auto;
+    word-wrap: break-word;
 }
 
 .button {
@@ -1242,19 +1253,22 @@ img {
 
 @media screen and (max-width: 480px) {
     .square {
-        width: clamp(150px, 40vw, 200px);
+        width: min(90vw, 280px);
     }
 
     .circle {
-        padding: clamp(0.5rem, 2vw, 1rem);
+        width: 85%;
+        height: 85%;
+        padding: clamp(0.3rem, 1.5vw, 1rem);
     }
 
-    .content h2 {
-        font-size: clamp(1.4rem, 3vw, 2rem);
+    .middle {
+        font-size: clamp(0.9rem, 4vw, 1.5rem);
+        margin-bottom: 0.3rem;
     }
 
     .content p {
-        font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+        font-size: clamp(0.6rem, 2.5vw, 0.9rem);
     }
 
     .button {
