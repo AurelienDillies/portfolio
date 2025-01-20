@@ -4,12 +4,15 @@
     margin: 0;
     padding: 0;
 }
-/* Utilisation de variables CSS pour une meilleure maintenance */
+
+/* Variables CSS */
 :root {
     --primary-color: #0052a3; 
     --secondary-color: #333;
     --text-stroke-color: rgba(255,255,255,0.6);
-    --animation-color:rgb(20, 36, 50);
+    --animation-color: rgb(20, 36, 50);
+    --header-height: clamp(50px, 8vh, 80px);
+    --container-width: min(95%, 1400px);
 }
 
 /* Personnalisation de la scrollbar pour WebKit (Chrome, Safari) */
@@ -42,16 +45,43 @@
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--secondary-color);
     background-color: var(--secondary-color);
     width: 100%;
-    font-size: clamp(1rem, 2.5vw, 1.2rem); 
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
 }
 
 html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
 }
+
+/* Simplification des styles communs */
+.section-content {
+    width: var(--container-width);
+    margin: 0 auto;
+    padding: clamp(1rem, 3vw, 2rem);
+}
+
+/* Optimisation des grilles */
+.projet-grid, #services ul, #a_propos ul {
+    display: grid;
+    gap: clamp(1rem, 3vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+
+/* Optimisation du carousel */
+.carousel-slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    padding: clamp(1rem, 3vw, 2rem);
+    gap: clamp(1rem, 3vw, 2rem);
+    background: #fff;
+    border-radius: 8px;
+    transition: transform 0.5s ease-in-out;
+}
+
 /* Styles de l'intro */
 .intro {
     width: 100%;
@@ -76,7 +106,7 @@ html {
 
 .square {
     position: relative;
-    width: min(85vw, 400px);
+    width: min(85vw, 300px);
     aspect-ratio: 1;
     display: flex;
     justify-content: center;
@@ -345,17 +375,6 @@ section {
     padding: 2rem 0;
 }
 
-.section-content {
-    padding: clamp(0.2rem, 2vw, 2rem);
-    margin: 0 auto;
-    width: min(98%, 1600px);
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 #services, #a_propos {
     background-color: rgb(230, 230, 230);
 }
@@ -555,21 +574,6 @@ p {
     display: flex;
     width: 100%;
     transform: translateX(0);
-    will-change: transform;
-}
-
-.carousel-slide {
-    min-width: 100%;
-    display: flex;
-    align-items: center;
-    padding: clamp(1rem, 3vw, 2rem);
-    gap: clamp(1rem, 3vw, 2rem);
-    background: #fff;
-    border-radius: 8px;
-    opacity: 1;
-    transition: all 0.5s ease-in-out;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
     will-change: transform;
 }
 
@@ -801,104 +805,30 @@ img {
     will-change: transform;
 }
 
-/* Gestion des très petits écrans */
-@media screen and (max-width: 220px) {
+/* Mobile - Petits écrans */
+@media screen and (max-width: 480px) {
+    /* Header */
     .h_logo {
-        height: clamp(20px, 6vw, 40px);
-        width: clamp(20px, 6vw, 40px);
+        height: clamp(35px, 8vw, 50px);
+        width: clamp(35px, 8vw, 50px);
     }
 
     .h_lien a {
-        font-size: clamp(0.5rem, 2vw, 1rem); 
-        padding: clamp(0.3rem, 1vw, 0.8rem); 
+        font-size: clamp(0.8rem, 2.5vw, 1rem);
+        padding: 0.5rem 0.8rem;
     }
 
+    /* Layout */
     .section-content {
-        padding: 0.5rem;
+        padding: 1rem;
     }
 
     .projet-grid, #services ul, #a_propos ul {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
+        gap: 1rem;
     }
 
-    #services li, #a_propos li, .projet {
-        padding: 0.5rem;
-        margin-bottom: 0.5rem;
-    }
-
-    h1 { font-size: clamp(0.7rem, 3vw, 1rem); }
-    h2 { font-size: clamp(0.6rem, 2.5vw, 0.9rem); }
-    h3 { font-size: clamp(0.5rem, 2vw, 0.8rem); }
-    p { font-size: clamp(0.4rem, 2vw, 0.7rem); }
-
-    .ouvrir-modal, #CV {
-        padding: 0.3rem 0.6rem;
-        font-size: clamp(0.4rem, 1.5vw, 0.7rem);
-    }
-
-    footer {
-        padding: 1rem 2rem;
-    }
-    footer h2 {
-        font-size: clamp(0.6rem, 2.5vw, 0.9rem);
-    }
-
-    footer h3 {
-        font-size: clamp(0.6rem, 2.3vw, 0.9rem);
-    }
-
-    footer a {
-        font-size: clamp(0.5rem, 2vw, 1rem);
-    }
-
-    .fermer-modal {
-        top: 0.5rem;
-        right: 0.5rem;
-    }
-
-    .modal-content h3 {
-        margin-top: 2rem;
-    }
-
-    .square {
-        max-width: 200px;
-        height: 200px;
-    }
-
-    .circle {
-        padding: 20px 30px;
-    }
-
-    .middle {
-        font-size: clamp(1rem, 3vw, 2rem);
-    }
-
-    .content p {
-        font-size: clamp(0.7rem, 1.5vw, 0.9rem);
-    }
-
-    .button {
-        font-size: 1.2em;
-    }
-
-    #accueil .section-content {
-        min-height: 50vh;
-        padding: 1.5rem 1rem;
-    }
-
-    #accueil .intro-text {
-        padding: 1.5rem;
-    }
-
-    #accueil h1 {
-        font-size: 2.2rem;
-    }
-
-    #accueil p {
-        font-size: 1rem;
-    }
-
+    /* Carousel */
     .carousel-slide {
         flex-direction: column;
         text-align: center;
@@ -906,66 +836,111 @@ img {
     }
 
     .tech-image {
-        margin-bottom: 1rem;
-        flex: 0 0 150px;
+        flex: 0 0 80px;
+        max-width: 80px;
+        margin: 0 auto 1rem;
+    }
+
+    .tech-image img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .tech-description {
+        width: 100%;
     }
 
     .tech-description h4 {
-        font-size: 1.2rem;
-    }
-
-    .tech-description p {
-        font-size: 0.9rem;
-    }
-    
-}
-
-/* Media Queries - Mobile */
-@media screen and (max-width: 480px) {
-    .carousel-slide {
-        padding: 1rem;
-    }
-
-    .tech-image {
-        flex: 0 0 100px;
-        max-width: 100px;
-    }
-
-    .tech-description h4 {
-        font-size: clamp(1rem, 5vw, 1.3rem);
+        font-size: clamp(1rem, 4vw, 1.2rem);
         margin-bottom: 0.5rem;
     }
 
     .tech-description p {
-        font-size: clamp(0.8rem, 4vw, 0.9rem);
+        font-size: clamp(0.8rem, 3.5vw, 1rem);
     }
-}
 
-/* Gestion des très petits écrans */
-@media screen and (max-width: 767px) {
+    /* Intro */
+    .intro {
+        padding: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    .content {
+        gap: clamp(0.8rem, 2vw, 1.2rem);
+        width: 100%;
+        padding: clamp(0.5rem, 1.5vw, 1rem);
+    }
+
     .square {
-        max-width: 200px;
-        height: 200px;
+        width: min(90vw, 250px);
+        aspect-ratio: 1;
+        margin-bottom: clamp(0.5rem, 2vw, 1rem);
+        transform: scale(0.9);
     }
 
     .circle {
-        padding: 20px 30px;
+        width: 90%;
+        height: 90%;
+        padding: clamp(0.5rem, 1.5vw, 1rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .middle {
-        font-size: clamp(1rem, 3vw, 2rem);
+        font-size: clamp(1rem, 5vw, 1.5rem);
+        margin-bottom: clamp(0.3rem, 1vw, 0.5rem);
+        line-height: 1.2;
     }
 
     .content p {
-        font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+        font-size: clamp(0.7rem, 3vw, 0.9rem);
+        line-height: 1.3;
+        margin: 0;
     }
 
     .button {
-        font-size: 1.2em;
+        font-size: clamp(0.9rem, 4vw, 1.2rem);
+        margin-top: clamp(0.5rem, 2vw, 1rem);
+        white-space: nowrap;
+    }
+
+    /* Ajustements pour les animations sur mobile */
+    .square .one, .square .two, .square .three {
+        border-width: 1px;
+    }
+    
+    .modal-content h3 {
+        margin-top: clamp(2rem, 4vw, 3rem);
     }
 }
 
-/* Media Queries - Tablette */
+/* Très petits écrans */
+@media screen and (max-width: 320px) {
+    .square {
+        width: min(85vw, 200px);
+        transform: scale(0.85);
+    }
+
+    .middle {
+        font-size: clamp(0.9rem, 4vw, 1.2rem);
+    }
+
+    .content p {
+        font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+    }
+
+    .button {
+        font-size: clamp(0.8rem, 3.5vw, 1rem);
+    }
+
+    .tech-image {
+        flex: 0 0 60px;
+        max-width: 60px;
+    }
+}
+
+/* Tablette */
 @media screen and (min-width: 768px) {
     .bgHeader {
         flex-direction: row;
@@ -974,64 +949,12 @@ img {
         margin: 0 auto;
     }
 
-    .h_logo {
-        margin-bottom: 0;
-    }
-
-    .h_lien ul {
-        gap: 1rem;
-    }
-
-    .h_lien a {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-    }
-
-    .projet-grid {
+    .projet-grid, #services ul, #a_propos ul {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
 
-    .section-content {
-        padding: 0 2rem;
-        max-width: 90%;
-    }
-    #services ul {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    #a_propos ul {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .square {
-        width: clamp(180px, 50vw, 300px);
-    }
-
-    .circle {
-        padding: clamp(0.8rem, 3vw, 1.5rem);
-    }
-
-    .content {
-        gap: clamp(1rem, 3vw, 2rem);
-    }
-
-    .content h2 {
-        font-size: clamp(1.4rem, 3vw, 2rem);
-    }
-
-    .content p {
-        font-size: clamp(0.9rem, 1.8vw, 1.1rem);
-    }
-
     #accueil .section-content {
-        min-height: 60vh;
-        padding: 2rem;
-        justify-content: center;
-    }
-
-    #accueil .intro-text {
-        text-align: center;
         padding: 2rem;
     }
 
@@ -1040,31 +963,47 @@ img {
     }
 
     .carousel-slide {
-        flex-direction: column;
-        text-align: center;
         padding: 1.5rem;
-    }
-
-    .tech-description {
-        text-align: center;
     }
 
     .tech-image {
         flex: 0 0 150px;
-        max-width: 150px; 
+        max-width: 150px;
         margin-bottom: 1rem;
     }
 
-    .tech-description p {
-        text-align: center;
+    /* Intro */
+    .intro {
+        padding: clamp(1rem, 3vw, 2rem);
     }
 
-    .content h2 {
-        font-size: 2rem;
+    .square {
+        width: min(70vw, 350px);
+        aspect-ratio: 1;
+        margin-bottom: 1.5rem;
+    }
+
+    .circle {
+        width: 90%;
+        height: 90%;
+        padding: clamp(1.2rem, 3vw, 2rem);
+    }
+
+    .middle {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        margin-bottom: 0.8rem;
+    }
+
+    .content p {
+        font-size: clamp(1rem, 3vw, 1.3rem);
+    }
+
+    .button {
+        font-size: clamp(1.4rem, 3.5vw, 1.8rem);
     }
 }
 
-/* Media Queries - Desktop */
+/* Desktop */
 @media screen and (min-width: 1024px) {
     .bgHeader {
         padding: 0.5rem 2rem;
@@ -1073,10 +1012,6 @@ img {
     .h_logo {
         height: 100px;
         width: 100px;
-    }
-
-    .h_lien a {
-        font-size: 1.1rem;
     }
 
     .projet-grid {
@@ -1088,37 +1023,7 @@ img {
         padding: 3rem 0;
     }
 
-    .section-content {
-        padding: 0 2rem;
-    }
-
-    #services ul {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .square {
-        max-width: 400px;
-        height: 400px; 
-    }
-
-    .circle {
-        padding: 40px 60px;
-    }
-
-    .middle {
-        font-size: clamp(1.5rem, 5vw, 3rem);
-    }
-
-    .content p {
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
-    }
-
-    .button {
-        font-size: 2em;
-    }
-
     #accueil .section-content {
-        min-height: 70vh;
         padding: 2rem 3rem;
     }
 
@@ -1127,31 +1032,53 @@ img {
     }
 
     .carousel-slide {
-        flex-direction: column;
-        text-align: center;
+        gap: 2rem;
     }
 
     .tech-image {
+        flex: 0 0 200px;
+        max-width: 200px;
+        margin-bottom: 0;
+    }
+
+    /* Intro */
+    .intro {
+        padding: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .square {
+        width: min(60vw, 400px);
+        aspect-ratio: 1;
+        margin-bottom: 2rem;
+    }
+
+    .circle {
+        width: 95%;
+        height: 95%;
+        padding: clamp(2rem, 4vw, 3rem);
+    }
+
+    .middle {
+        font-size: clamp(2.2rem, 6vw, 3rem);
         margin-bottom: 1rem;
     }
-}
 
-/* Media Queries - Large Desktop */
-@media screen and (min-width: 1440px) {
-    .projet-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin: 0 auto;
+    .content p {
+        font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+    }
+
+    .button {
+        font-size: clamp(1.6rem, 4vw, 2rem);
     }
 }
 
+/* Ces media queries sont importantes pour l'accessibilité, on les garde */
 @media (prefers-reduced-motion: no-preference) {
     .projet {
         view-transition-name: projet;
     }
 }
 
-/* Optimisation des animations */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;

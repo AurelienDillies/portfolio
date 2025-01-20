@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Regroupement des sélecteurs fréquemment utilisés
+    const header = document.querySelector('header');
+    const intro = document.querySelector('.intro');
+    const main = document.querySelector('main');
+    const footer = document.querySelector('footer');
+
     // Fonction pour obtenir la hauteur du header
     function getHeaderHeight() {
         const header = document.querySelector('header');
@@ -165,14 +171,28 @@ document.addEventListener('DOMContentLoaded', function() {
         imageObserver.observe(img);
     });
 
-    // Révéler le site lorsque l'on clique sur le lien du portfolio
+    // Optimisation de la révélation du site
     document.querySelector('.reveal-site').addEventListener('click', function(e) {
         e.preventDefault();
-        document.querySelector('.intro').style.display = 'none';
-        document.querySelector('header').style.display = 'block';
-        document.querySelector('main').style.display = 'block';
-        document.querySelector('footer').style.display = 'block';
-        updateActiveLink(); // Mise à jour des liens actifs
+        intro.style.display = 'none';
+        [header, main, footer].forEach(el => el.style.display = 'block');
+        
+        // Réinitialiser les liens actifs
+        document.querySelectorAll('.h_lien a').forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        // Activer le lien "accueil" par défaut
+        const accueilLink = document.querySelector('.h_lien a[href="#accueil"]');
+        if (accueilLink) {
+            accueilLink.classList.add('active');
+        }
+        
+        // Scroll vers le haut de la page
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     });
 
     // Fonction pour mettre à jour les liens actifs
@@ -208,21 +228,61 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mise à jour des liens actifs lors du défilement
     window.addEventListener('scroll', updateActiveLink);
 
-    // Carrousel automatique
-    const carouselContainer = document.querySelector('.carousel-container');
-    const carouselSlide = document.querySelector('.carousel-slide');
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    let currentIndex = 0;
+    // Optimisation du carousel
+    class TechCarousel {
+        constructor() {
+            this.container = document.querySelector('.carousel-slides');
+            this.slides = document.querySelectorAll('.carousel-slide');
+            this.currentSlide = 0;
+            this.isTransitioning = false;
+            
+            // Clone optimisé
+            this.container.appendChild(this.slides[0].cloneNode(true));
+            
+            this.init();
+        }
 
-    function showNextSlide() {
-        currentIndex = (currentIndex + 1) % carouselItems.length;
-        const offset = -currentIndex * 100;
-        carouselSlide.style.transform = `translateX(${offset}%)`;
+        init() {
+            this.showSlide(0);
+            this.startAutoSlide();
+        }
+
+        showSlide(index) {
+            if (this.isTransitioning) return;
+            
+            this.isTransitioning = true;
+            this.currentSlide = index;
+            
+            requestAnimationFrame(() => {
+                this.container.style.transform = `translateX(-${index * 100}%)`;
+                
+                if (index === this.slides.length) {
+                    setTimeout(() => {
+                        this.container.style.transition = 'none';
+                        this.container.style.transform = 'translateX(0)';
+                        this.currentSlide = 0;
+                        requestAnimationFrame(() => {
+                            this.container.style.transition = 'transform 0.5s ease-in-out';
+                        });
+                    }, 500);
+                }
+                
+                setTimeout(() => this.isTransitioning = false, 500);
+            });
+        }
+
+        startAutoSlide() {
+            setInterval(() => {
+                if (!document.hidden) {
+                    this.showSlide(this.currentSlide + 1);
+                }
+            }, 4000);
+        }
     }
 
-    setInterval(showNextSlide, 2000);
+    // Initialisation optimisée
+    new TechCarousel();
 
-    const header = document.querySelector('header');
     const scrollThreshold = 100; // Nombre de pixels à scroller avant l'effet
 
     window.addEventListener('scroll', () => {
@@ -232,70 +292,4 @@ document.addEventListener('DOMContentLoaded', function() {
             header.classList.remove('scrolled');
         }
     });
-});
-
-// Suppression de la gestion des indicateurs
-class TechCarousel {
-    constructor() {
-        this.container = document.querySelector('.carousel-slides');
-        this.slides = document.querySelectorAll('.carousel-slide');
-        this.currentSlide = 0;
-        this.slideInterval = null;
-        this.isTransitioning = false;
-        
-        // Cloner le premier slide et l'ajouter à la fin
-        const firstSlideClone = this.slides[0].cloneNode(true);
-        this.container.appendChild(firstSlideClone);
-        
-        this.init();
-    }
-
-    init() {
-        this.showSlide(0);
-        this.startAutoSlide();
-    }
-
-    showSlide(index) {
-        if (this.isTransitioning) return;
-        
-        this.currentSlide = index;
-        const offset = -index * 100;
-        
-        this.isTransitioning = true;
-        this.container.style.transition = 'transform 0.5s ease-in-out';
-        this.container.style.transform = `translateX(${offset}%)`;
-
-        // Si on arrive au clone du premier slide
-        if (index === this.slides.length) {
-            setTimeout(() => {
-                this.container.style.transition = 'none';
-                this.container.style.transform = 'translateX(0)';
-                this.currentSlide = 0;
-            }, 500);
-        }
-
-        setTimeout(() => {
-            this.isTransitioning = false;
-        }, 500);
-    }
-
-    nextSlide() {
-        if (this.isTransitioning) return;
-        const next = this.currentSlide + 1;
-        this.showSlide(next);
-    }
-
-    startAutoSlide() {
-        this.slideInterval = setInterval(() => this.nextSlide(), 4000);
-    }
-
-    resetAutoSlide() {
-        clearInterval(this.slideInterval);
-        this.startAutoSlide();
-    }
-}
-
-// Initialiser le carrousel quand le DOM est chargé
-document.addEventListener('DOMContentLoaded', () => {
-    new TechCarousel();
 });
