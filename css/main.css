@@ -317,7 +317,7 @@ a {
 
 #accueil {
     position: relative;
-    min-height: 100vh; /* Ajustement de la hauteur */
+    min-height: 90vh; /* Ajustement de la hauteur */
     width: 100%;
     display: flex;
     justify-content: center; /* Centrer horizontalement */
@@ -880,10 +880,6 @@ img {
         font-size: 1.5em;
     }
 
-    #accueil {
-        min-height: 60vh;
-    }
-
     #accueil .section-content {
         min-height: 60vh;
         padding: 2rem;
@@ -975,10 +971,6 @@ img {
 
     .button {
         font-size: 2em;
-    }
-
-    #accueil {
-        min-height: 70vh;
     }
 
     #accueil .section-content {
@@ -1088,9 +1080,6 @@ img {
 
     .button {
         font-size: 1.2em;
-    }
-    #accueil {
-        min-height: 50vh;
     }
 
     #accueil .section-content {
