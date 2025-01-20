@@ -241,24 +241,47 @@ class TechCarousel {
         this.slides = document.querySelectorAll('.carousel-slide');
         this.currentSlide = 0;
         this.slideInterval = null;
+        this.isTransitioning = false;
+        
+        // Cloner le premier slide et l'ajouter à la fin
+        const firstSlideClone = this.slides[0].cloneNode(true);
+        this.container.appendChild(firstSlideClone);
         
         this.init();
     }
 
     init() {
-        // Initialiser le carrousel
         this.showSlide(0);
         this.startAutoSlide();
     }
 
     showSlide(index) {
+        if (this.isTransitioning) return;
+        
         this.currentSlide = index;
         const offset = -index * 100;
+        
+        this.isTransitioning = true;
+        this.container.style.transition = 'transform 0.5s ease-in-out';
         this.container.style.transform = `translateX(${offset}%)`;
+
+        // Si on arrive au clone du premier slide
+        if (index === this.slides.length) {
+            setTimeout(() => {
+                this.container.style.transition = 'none';
+                this.container.style.transform = 'translateX(0)';
+                this.currentSlide = 0;
+            }, 500);
+        }
+
+        setTimeout(() => {
+            this.isTransitioning = false;
+        }, 500);
     }
 
     nextSlide() {
-        const next = (this.currentSlide + 1) % this.slides.length;
+        if (this.isTransitioning) return;
+        const next = this.currentSlide + 1;
         this.showSlide(next);
     }
 
