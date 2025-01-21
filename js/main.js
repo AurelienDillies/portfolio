@@ -5,6 +5,54 @@ document.addEventListener('DOMContentLoaded', function() {
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
 
+    // Sauvegarder la position de défilement avant le rechargement
+    window.addEventListener('beforeunload', () => {
+        sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+    });
+    
+    // Fonction pour révéler le site
+    function revealSite() {
+        intro.style.display = 'none';
+        [header, main, footer].forEach(el => el.style.display = 'block');
+        
+        // Restaurer la position de défilement si elle existe
+        const savedScrollPosition = sessionStorage.getItem('scrollPosition');
+        if (savedScrollPosition) {
+            window.scrollTo(0, parseInt(savedScrollPosition));
+            // Effacer la position sauvegardée après l'avoir utilisée
+            sessionStorage.removeItem('scrollPosition');
+        }
+        
+        updateActiveLink();
+    }
+
+    // Optimisation de la révélation du site
+    document.querySelector('.reveal-site').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Désactiver toutes les animations CSS
+        document.body.style.scrollBehavior = 'auto';
+        document.documentElement.style.scrollBehavior = 'auto';
+        
+        const savedScrollPosition = sessionStorage.getItem('scrollPosition');
+        
+        intro.style.display = 'none';
+        [header, main, footer].forEach(el => el.style.display = 'block');
+        
+        if (savedScrollPosition) {
+            window.scrollTo(0, parseInt(savedScrollPosition));
+            sessionStorage.removeItem('scrollPosition');
+        }
+        
+        // Réactiver les animations après un court délai
+        setTimeout(() => {
+            document.body.style.scrollBehavior = '';
+            document.documentElement.style.scrollBehavior = 'smooth';
+        }, 100);
+        
+        updateActiveLink();
+    });
+
     // Fonction pour obtenir la hauteur du header
     function getHeaderHeight() {
         return header ? header.offsetHeight : 0;
@@ -159,30 +207,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Observer les images
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
-    });
-
-    // Optimisation de la révélation du site
-    document.querySelector('.reveal-site').addEventListener('click', function(e) {
-        e.preventDefault();
-        intro.style.display = 'none';
-        [header, main, footer].forEach(el => el.style.display = 'block');
-        
-        // Réinitialiser les liens actifs
-        document.querySelectorAll('.h_lien a').forEach(link => {
-            link.classList.remove('active');
-        });
-        
-        // Activer le lien "accueil" par défaut
-        const accueilLink = document.querySelector('.h_lien a[href="#accueil"]');
-        if (accueilLink) {
-            accueilLink.classList.add('active');
-        }
-        
-        // Scroll vers le haut de la page
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
     });
 
     // Fonction pour mettre à jour les liens actifs
