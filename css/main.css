@@ -774,7 +774,7 @@ img {
     }
 
     .middle {
-        font-size: clamp(1rem, 4vw, 1.2rem); /* Ajustement de la taille de la police */
+        font-size: clamp(1rem, 4vw, 1.2rem);
     }
 
     .content p {

@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fonction pour obtenir la hauteur du header
     function getHeaderHeight() {
-        const header = document.querySelector('header');
         return header ? header.offsetHeight : 0;
     }
 
@@ -18,15 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = targetPosition - headerHeight;
 
-        try {
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        } catch (error) {
-            // Fallback pour les navigateurs ne supportant pas smooth scroll
-            window.scrollTo(0, offsetPosition);
-        }
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+        });
     }
 
     // Gestion du scroll interne
@@ -68,11 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeModalButtons = document.querySelectorAll('.fermer-modal');
 
     function toggleBodyScroll(isModalOpen) {
-        if (isModalOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+        document.body.style.overflow = isModalOpen ? 'hidden' : '';
     }
 
     function closeAllModals() {
@@ -297,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialisation optimisée
     new TechCarousel();
 
-    const scrollThreshold = 100; // Nombre de pixels à scroller avant l'effet
+    const scrollThreshold = 100;
 
     window.addEventListener('scroll', () => {
         if (window.scrollY > scrollThreshold) {
