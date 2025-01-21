@@ -11,8 +11,6 @@
     --secondary-color: #333;
     --text-stroke-color: rgba(255,255,255,0.6);
     --animation-color: rgb(20, 36, 50);
-    --header-height: clamp(50px, 8vh, 80px);
-    --container-width: min(95%, 1400px);
 }
 
 /* Personnalisation de la scrollbar pour Chrome, Safari */
@@ -334,7 +332,7 @@ main {
 }
 
 .section-content {
-    width: var(--container-width);
+    width: min(95%, 1400px);
     margin: 0 auto;
     padding: clamp(1rem, 3vw, 2rem);
 }
@@ -448,6 +446,7 @@ p {
 }
 
 /* À propos */
+
 #a_propos ul {
     list-style: none;
     margin: 1.5rem 0;
@@ -494,6 +493,7 @@ p {
 }
 
 /* carousel */
+
 .carousel-slide {
     min-width: 100%;
     display: flex;
@@ -573,6 +573,7 @@ p {
 }
 
 /* Footer */
+
 footer {
     background-color: #333;
     color: #fff;

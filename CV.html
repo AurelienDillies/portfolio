@@ -1,19 +1,29 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CV d'Aurélien Dillies - Développeur Web Full Stack">
-    
+    <title>CV - Aurélien Dillies | Développeur Web</title>
+
+    <meta name="description" content="CV - Aurélien Dillies | Développeur Web">
+
+     <!-- Optimisation du chargement des ressources -->
+     <link rel="stylesheet" href="./css/CV.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+     <script src="./js/main.js" defer></script>
+
     <!-- Preload des ressources critiques -->
     <link rel="preload" href="./css/CV.css" as="style">
     <link rel="preload" href="./image/logo-svg.svg" as="image">
+    <link rel="preload" href="./js/main.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style">
     
-    <title>CV - Aurélien Dillies | Développeur Web</title>
-    <link rel="shortcut icon" href="./image/logo-svg.svg" type="image/x-icon">
-    <link rel="stylesheet" href="./css/CV.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <script src="./js/main.js" defer></script>
+   <!-- Favicon optimisé -->
+   <link rel="icon" type="image/svg+xml" href="./image/logo-svg.svg">
+   <link rel="apple-touch-icon" href="./image/logo-png.png">
+
 </head>
 <body>
     
@@ -21,7 +31,7 @@
         <div class="bgHeader">
             <div class="h_logo">
                 <a href="#accueil" aria-label="Retour à l'accueil">
-                    <img src="./image/logo-svg.svg" alt="Logo Aurélien Dillies">
+                    <img src="./image/logo-svg.svg" alt="Logo Aurélien Dillies" width="100" height="100">
                 </a>
             </div>
             <nav class="h_lien" aria-label="Navigation principale">
@@ -33,12 +43,9 @@
         </div>
     </header>
     <main>
-        <section id="cv-section">
-            <div class="section-content">
-                <h1>Mon CV</h1>
+            <div>
                 <img src="./image/CV_DILLIES_Aurelien.jpg" alt="CV d'Aurélien Dillies" style="width: 100%; height: auto;">
             </div>
-        </section>
     </main>
 </body>
 </html>
