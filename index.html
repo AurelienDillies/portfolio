@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Aurélien Dillies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Portfolio Aurélien Dillies - Développeur Web Full-Stack</title>
     
+    <!-- Meta tags SEO améliorés -->
+    <meta name="description" content="Portfolio d'Aurélien Dillies, développeur web full-stack. HTML, CSS, JavaScript, PHP et frameworks modernes. Création de sites web accessibles et performants.">
+    <meta name="keywords" content="Aurélien Dillies, développeur web, portfolio, front-end, back-end, web design, accessibilité web, PHP, JavaScript, HTML5, CSS3, Symfony, Angular">
+    <meta name="author" content="Aurélien Dillies">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="revisit-after" content="7 days">
+    <meta name="language" content="French">
+    <meta name="theme-color" content="#333333">
+
+    <!-- Open Graph Meta Tags améliorés -->
+    <meta property="og:title" content="Portfolio Aurélien Dillies - Développeur Web Full-Stack">
+    <meta property="og:description" content="Découvrez le portfolio d'Aurélien Dillies, développeur web passionné par la création de sites web accessibles et performants.">
+    <meta property="og:image" content="./image/logo-png.png">
+    <meta property="og:image:alt" content="Logo du portfolio d'Aurélien Dillies">
+    <meta property="og:url" content="https://aureliendillies.github.io/portfolio/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:site_name" content="Portfolio Aurélien Dillies">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio Aurélien Dillies - Développeur Web">
+    <meta name="twitter:description" content="Découvrez mes projets et compétences en développement web full-stack">
+    <meta name="twitter:image" content="./image/logo-png.png">
+    <meta name="twitter:image:alt" content="Logo du portfolio d'Aurélien Dillies">
+
     <!-- Optimisation du chargement des ressources -->
     <link rel="stylesheet" href="./css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,25 +40,7 @@
     
     <!-- Favicon optimisé -->
     <link rel="icon" type="image/svg+xml" href="./image/logo-svg.svg">
-    
-    <!-- Meta tags optimisés -->
-    <meta name="description" content="Portfolio d'Aurélien Dillies, développeur web full-stack">
-    <meta name="theme-color" content="#333333">
-
-    <!-- SEO Meta Tags -->
-    <meta name="keywords" content="Aurélien Dillies, développeur web, portfolio, front-end, back-end, web design">
-    <meta name="author" content="Aurélien Dillies">
-
-    <!-- Open Graph Meta Tags for social media sharing -->
-    <meta property="og:title" content="Portfolio Aurélien Dillies">
-    <meta property="og:description" content="Découvrez le portfolio d'Aurélien Dillies, développeur web passionné.">
-    <meta property="og:image" content="./image/logo-png.png">
-    <meta property="og:url" content="https://aureliendillies.github.io/portfolio/">
-    <meta property="og:type" content="website">
-
-    <!-- Ajout de meta tags pour SEO -->
-    <meta name="robots" content="index, follow">
-    <meta name="revisit-after" content="7 days">
+    <link rel="apple-touch-icon" href="./image/logo-png.png">
     
     <!-- Preload des ressources critiques -->
     <link rel="preload" href="./css/main.css" as="style">
@@ -44,14 +52,21 @@
     <!-- Optimisation des polices -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style">
 
-    <!-- Ajout de structured data -->
+    <!-- Structured Data amélioré -->
     <script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "Person",
         "name": "Aurélien Dillies",
-        "jobTitle": "Développeur Web",
-        "url": "https://aureliendillies.github.io/portfolio/"
+        "jobTitle": "Développeur Web Full-Stack",
+        "url": "https://aureliendillies.github.io/portfolio/",
+        "image": "./image/logo-png.png",
+        "description": "Développeur web full-stack spécialisé dans la création de sites web accessibles et performants",
+        "knowsAbout": ["HTML5", "CSS3", "JavaScript", "PHP", "Symfony", "Angular", "Accessibilité Web"],
+        "worksFor": {
+            "@type": "Organization",
+            "name": "Freelance"
+        }
     }
     </script>
 </head>
@@ -60,18 +75,18 @@
 <body>
     <div class="intro">
         <div class="content">
-            <div class="square twitch">
-                <span class="one" ></span>
-                <span class="two"></span>
-                <span class="three"></span>
+            <div class="square twitch" role="presentation">
+                <span class="one" aria-hidden="true"></span>
+                <span class="two" aria-hidden="true"></span>
+                <span class="three" aria-hidden="true"></span>
                 <div class="circle">
                     <h2 class="middle">Aurélien Dillies</h2>
                     <p>Developpeur Full-Stack</p>
                 </div>
             </div>
 
-            <a href="#" class="button reveal-site" target="_parent">
-                <span class="actual-text">&nbsp;Portfolio&nbsp;</span>
+            <a href="#" class="button reveal-site" target="_parent" aria-label="Accéder au portfolio">
+                <span class="actual-text" aria-hidden="true">&nbsp;Portfolio&nbsp;</span>
                 <span class="hover-text" aria-hidden="true">&nbsp;Portfolio&nbsp;</span>
             </a>
         </div>
@@ -81,7 +96,7 @@
         <div class="bgHeader">
             <div class="h_logo">
                 <a href="#accueil" aria-label="Retour à l'accueil">
-                    <img src="./image/logo-svg.svg" alt="Logo Aurélien Dillies">
+                    <img src="./image/logo-svg.svg" alt="Logo Aurélien Dillies" width="100" height="100">
                 </a>
             </div>
             <nav class="h_lien" aria-label="Navigation principale">
