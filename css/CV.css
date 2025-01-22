@@ -40,7 +40,6 @@
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    color: var(--secondary-color);
     background-color: var(--secondary-color);
     width: 100%;
     font-size: clamp(1rem, 2.5vw, 1.2rem);
@@ -127,6 +126,32 @@ a {
 }
 .h_lien ul li:hover {
     transform: scale(1.1);
+}
+
+/* CV */
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 100%;
+}
+
+.gauche {
+    background-color: orange;
+    padding: 1rem;
+}
+
+.droite {
+    background-color: white;
+    padding: 1rem;
+}
+
+main h2 {
+    text-transform: uppercase;
+}
+
+main ul {
+    list-style: none;
 }
 
 @media screen and (min-width: 768px) {
