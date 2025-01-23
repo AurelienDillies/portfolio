@@ -12,12 +12,12 @@
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-     <script src="./js/main.js" defer></script>
+     <!-- <script src="./js/main.js" defer></script> -->
 
     <!-- Preload des ressources critiques -->
     <link rel="preload" href="./css/CV.css" as="style">
     <link rel="preload" href="./image/logo-svg.svg" as="image">
-    <link rel="preload" href="./js/main.js" as="script">
+    <!-- <link rel="preload" href="./js/main.js" as="script"> -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style">
     
    <!-- Favicon optimisé -->
@@ -42,13 +42,18 @@
             </nav>
         </div>
     </header>
+    
     <main>
         <div class="gauche">
 
-            <section class="information">
-                <h2>Information</h2>
+            <section class="informations">
+                <div class="section-tritre-g">
+                    <h2>Informations</h2>
+                    <div class="fondG"></div>
+                </div>
                 <p>23 ans</p>
                 <p>06 37 97 40 10</p>
+                <p>aureliendillies2001@gmail.com</p>
                 <p>Avenue Julien Lagache,<br>
                     59100 Roubaix</p>
                 <p>Permis B - Motorisé</p>
@@ -56,26 +61,35 @@
             </section>
 
             <section class="logiciel">
-                <h2>Logiciel</h2>
+                <div class="section-tritre-g">
+                    <h2>Logiciels</h2>
+                    <div class="fondG"></div>
+                </div>
                 <p>Pack Office</p>
                 <p>Visual Studio</p>
                 <p>Figma</p>
-                <p>WordPess</p>
+                <p>WordPress</p>
             </section>
 
-            <section class="Codage">
-                <h2>Codage</h2>
+            <section class="Développement">
+                <div class="section-tritre-g">
+                    <h2>Développement</h2>
+                    <div class="fondG"></div>
+                </div>
                 <p>HTML</p>
                 <p>CSS</p>
                 <p>JavaScript</p>
-                <p>Agular</p>
+                <p>Angular</p>
                 <p>PHP</p>
-                <p>Symphony</p>
+                <p>Symfony</p>
                 <p>SQL</p>
             </section>
 
-            <section class="compétence">
-                <h2>Compétence</h2>
+            <section class="compétences">
+                <div class="section-tritre-g">
+                    <h2>Compétences</h2>
+                    <div class="fondG"></div>
+                </div>
                 <p>Respectueux</p>
                 <p>Autonome</p>
                 <p>Travail d'équipe</p>
@@ -83,14 +97,24 @@
                 <p>Rigoureux</p>
             </section>
 
-            <section class="langue">
-                <h2>Langue</h2>
-                <p>Français</p> <span>- Courant</span>
-                <p>Anglais</p> <span>- B1</span>
+            <section class="langues">
+                <div class="section-tritre-g">
+                    <h2>Langues</h2>
+                    <div class="fondG"></div>
+                </div>
+                <div class="centre">
+                    <p>Français</p> <span>- Courant</span>
+                </div>
+                <div class="centre">
+                    <p>Anglais</p> <span>- B1</span>
+                </div>
             </section>
 
             <section class="interêts">
-                <h2>Intérêts</h2>
+                <div class="section-tritre-g">
+                    <h2>Intérêts</h2>
+                    <div class="fondG"></div>
+                </div>
                 <p>Plongée</p>
                 <p>Jeux vidéo</p>
                 <p>Cuisine</p>
@@ -108,72 +132,116 @@
                 <h1>Aurélien<br>
                     DILLIES</h1>
                 <h2>Développeur Web</h2>
-                   <h3>Recherche de Stage du 17/07 au 16/05</h3>
+                   <h3>Recherche de Stage du 17/02 au 16/05</h3>
             </section>
 
             <section class="ExpPro">
-                <h2>Expériences Professionnelles</h2>
+                <div class="section-tritre-d">
+                    <h2>Expériences Professionnelles</h2>
+                    <div class="fondD"></div>
+                </div>
+                <div class="barreE"></div>
 
-                <h4>2024</h4>
-                <p>Stage Développeur Web, Pour un Cabinet de Kinésithérapie</p>
-                <p>Lys-Lez-Lannois</p>
-                <ul>
-                    <li>Création d'un site web vitrine pour le cabinet</li>
-                    <li>Optimisation du site pour le référencement naturel (SEO)</li>
-                </ul>
+                <div class="date-titre-container">
+                    <p class="date">2024</p>
+                    <p class="titre">Stage Développeur Web, Pour un Cabinet de Kinésithérapie</p>
+                </div>
+                <div class="dev">
+                    <p>Lys-Lez-Lannoy</p>
+                    <ul>
+                        <li>Création d'un site web vitrine pour le cabinet</li>
+                        <li>Optimisation du site pour le référencement naturel (SEO)</li>
+                    </ul>
+                </div>
 
-                <h4>2021</h4>
-                <p>Stage Développeur Web, Pour la Mairie de Neuvilly</p>
-                <p>Neuilly</p>
-                <ul>
-                    <li>Développement d'un site web sous WordPress pour la mairie</li>
-                    <li>Intégration de plugins de newsletter pour la communication avec les administrés</li>
-                    <li>Maintenance et mise à jour du site</li>
-                </ul>
+                <div class="date-titre-container">
+                    <p class="date">2021</p>
+                    <p class="titre">Stage Développeur Web, Pour la Mairie de Neuvilly</p>
+                </div>
+                <div class="dev">
+                    <p>Neuilly</p>
+                    <ul>
+                        <li>Développement d'un site web sous WordPress pour la mairie</li>
+                        <li>Intégration de plugins de newsletter pour la communication avec les administrés</li>
+                        <li>Maintenance et mise à jour du site</li>
+                    </ul>
+                </div>
 
-                <h4>2019</h4>
-                <p>Pôle IT dans le lycée Sévigné</p>
-                <p>Tourcoing</p>
-                <ul>
-                    <li>Assistance technique pour les élèves et les professeurs</li>
-                    <li>Mise à jour des logiciels et des systèmes d'exploitation</li>
-                    <li>Installation et configuration de postes de travail sous Windows</li>
-                </ul>
+                <div class="date-titre-container">
+                    <p class="date">2019</p>
+                    <p class="titre">Pôle IT dans le lycée Sévigné</p>
+                </div>
+                <div class="dev">
+                    <p>Tourcoing</p>
+                    <ul>
+                        <li>Assistance technique pour les élèves et les professeurs</li>
+                        <li>Mise à jour des logiciels et des systèmes d'exploitation</li>
+                        <li>Installation et configuration de postes de travail sous Windows</li>
+                    </ul>
+                </div>
 
-                <h4>2016</h4>
-                <p>Stage dans le pôle informatique à Swiis Life</p>
-                <p>Roubaix</p>
-                <ul>
-                    <li>Observation et participation aux activités du pôle informatique</li>
-                    <li>Assistance aux techniciens dans leurs tâches quotidiennes</li>
-                </ul>
+                <div class="date-titre-container">
+                    <p class="date">2016</p>
+                    <p class="titre">Stage dans le pôle informatique à Swiss Life</p>
+                </div>
+                <div class="dev">
+                    <p>Roubaix</p>
+                    <ul>
+                        <li>Observation et participation aux activités du pôle informatique</li>
+                        <li>Assistance aux techniciens dans leurs tâches quotidiennes</li>
+                    </ul>
+                </div>
             </section>
 
             <section class="Formations">
-                <h2>Formations</h2>
+                <div class="section-tritre-d">
+                    <h2>Formations</h2>
+                    <div class="fondD"></div>
+                </div>
+                <div class="barreF"></div>
 
-                <h4>2024 - 2025</h4>
-                <p>Titre Professionnel Développeur Web et Web Mobile</p>
-                <p>AFCI - Villeneuve-d'Ascq</p>
+                <div class="date-titre-container">
+                    <p class="date">2024 - 2025</p>
+                    <p class="titre">Titre Professionnel Développeur Web et Web Mobile</p>
+                </div>
+                <div class="dev">
+                    <p>AFCI - Villeneuve-d'Ascq</p>
+                </div>
 
-                <h4>2023 - 2024</h4>
-                <p>Formation Ms Développeur Full-Stack</p>
-                <p>AFPA - Roubaix</p>
+                <div class="date-titre-container">
+                    <p class="date">2023 - 2024</p>
+                    <p class="titre">Formation Ms Développeur Full-Stack</p>
+                </div>
+                <div class="dev">
+                    <p>AFPA - Roubaix</p>
+                </div>
 
-                <h4>2020 - 2022</h4>
-                <p>BTS SNIR (Système Numérique Informatique et Réseau)</p>
-                <p>Diplôme : Équivalence de niveau</p>
-                <p>Lycée Colbert - Tourcoing</p>
+                <div class="date-titre-container">
+                    <p class="date">2020 - 2022</p>
+                    <p class="titre">BTS SNIR (Système Numérique Informatique et Réseau)</p>
+                </div>
+                <div class="dev">
+                    <p>Diplôme : Équivalence de niveau</p>
+                    <p>Lycée Colbert - Tourcoing</p>
+                </div>
 
-                <h4>2019 - 2020</h4>
-                <p>Baccalauréat Pro SN (Système Numérique)</p>
-                <p>Diplôme : obtenue avec mention Bien</p>
-                <p>Lycée Colbert - Tourcoing</p>
+                <div class="date-titre-container">
+                    <p class="date">2019 - 2020</p>
+                    <p class="titre">Baccalauréat Pro SN (Système Numérique)</p>
+                </div>
+                <div class="dev">
+                    <p>Diplôme : obtenu avec mention Bien</p> 
+                    <p>Lycée Colbert - Tourcoing</p>
+                </div>
 
-                <h4>2017 - 2019</h4>
-                <p>Baccalauréat STI2D (Sciences et Technologies de l'Industrie et du Développement Durable)</p>
-                <p>Diplôme : Équivalence de niveau</p>
-                <p>Lycée Colbert - Tourcoing</p>
+                <div class="date-titre-container">
+                    <p class="date">2017 - 2019</p>
+                    <p class="titre">Baccalauréat STI2D (Sciences et Technologies de l'Industrie et du Développement Durable)</p>
+                </div>
+                <div class="dev">
+                    <p>Diplôme : Équivalence de niveau</p>
+                    <p>Lycée Colbert - Tourcoing</p>
+                </div>
             </section>
 
         </div>

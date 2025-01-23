@@ -11,6 +11,8 @@
     --secondary-color: #333;
     --text-stroke-color: rgba(255,255,255,0.6);
     --animation-color: rgb(20, 36, 50);
+    --header-height: clamp(50px, 8vh, 80px);
+    --container-width: min(95%, 1400px);
 }
 
 /* Personnalisation de la scrollbar pour Chrome, Safari */
@@ -43,6 +45,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
+    color: var(--secondary-color);
     background-color: var(--secondary-color);
     width: 100%;
     font-size: clamp(1rem, 2.5vw, 1.2rem);
@@ -331,7 +334,7 @@ main {
 }
 
 .section-content {
-    width: min(95%, 1400px);
+    width: var(--container-width);
     margin: 0 auto;
     padding: clamp(1rem, 3vw, 2rem);
 }
@@ -445,7 +448,6 @@ p {
 }
 
 /* À propos */
-
 #a_propos ul {
     list-style: none;
     margin: 1.5rem 0;
@@ -492,7 +494,6 @@ p {
 }
 
 /* carousel */
-
 .carousel-slide {
     min-width: 100%;
     display: flex;
@@ -572,7 +573,6 @@ p {
 }
 
 /* Footer */
-
 footer {
     background-color: #333;
     color: #fff;
