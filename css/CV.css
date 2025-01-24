@@ -166,6 +166,7 @@ main li {
 
 .gauche p {
     margin: 0.5rem 0;
+    
     font-size: max(12px, 0.9em);
 }
 

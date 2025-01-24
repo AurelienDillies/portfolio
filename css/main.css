@@ -167,6 +167,7 @@ html {
 
 .square .one {
     border-radius: 32% 58% 69% 43% / 48% 32% 59% 55%;
+    
     animation: animate 6s linear infinite;
 }
 

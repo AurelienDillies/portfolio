@@ -155,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
     // Observer les images
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
@@ -211,7 +210,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
+    const CV = document.getElementById('CV');
+    CV.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.open('https://aureliendillies.github.io/portfolio/CV.html', '_blank');
+        window.location.href = "https://aureliendilllies.github.io/portfolio";
+    });
+    
     // Appel initial pour définir le lien actif
     updateActiveLink();
 
