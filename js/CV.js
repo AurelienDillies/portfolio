@@ -12,13 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fermer le menu en cliquant sur un lien
     menuPrincipal.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            
+        link.addEventListener('click', () => {  
             nav.classList.remove('active');
             menuToggle.setAttribute('aria-expanded', 'false');
         });
     });
-
     // Fermer le menu en cliquant en dehors
     document.addEventListener('click', (e) => {
         if (!nav.contains(e.target) && nav.classList.contains('active')) {
