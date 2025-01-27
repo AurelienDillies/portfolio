@@ -210,12 +210,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    const CV = document.getElementById('CV');
-    CV.addEventListener('click', function (e) {
-        e.preventDefault();
-        window.open('https://aureliendillies.github.io/portfolio/CV.html', '_blank');
-        window.location.href = "https://aureliendilllies.github.io/portfolio";
-    });
     
     // Appel initial pour définir le lien actif
     updateActiveLink();
@@ -283,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
         startAutoSlide() {
             setInterval(() => {
                 if (!document.hidden && !this.isTransitioning) {
-                    this.showSlide(this.currentSlide + 1);
+                    this.showSlide(this.currentSlide +  1);
                 }
             }, 4000);
         }

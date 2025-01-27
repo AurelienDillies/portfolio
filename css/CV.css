@@ -35,7 +35,6 @@
 body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
-    /* background-color: #333; */
     width: 100%;
 }
 
@@ -94,7 +93,7 @@ header.scrolled {
 }
 
 .h_lien a {
-    font-size: clamp(0.6rem, 3vw, 1.2rem); 
+    font-size: clamp(0.6rem, 3vw, 1rem); 
     padding: clamp(0.3rem, 1vw, 0.8rem);
     color: #fff;
     border-radius: 5px;
@@ -127,20 +126,23 @@ a {
 /* CV */
 
 main {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+    display: flex;
+    flex-direction: row; /* Disposition en ligne */
     width: 100%;
     max-width: 1200px;
     margin: 20px auto;
     justify-content: center;
     min-height: 100vh;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Ajouter un box-shadow pour ressembler à une page */
+    background-color: #fff; /* Ajouter un fond blanc pour le contraste */
 }
 
 main h2 {
     text-transform: uppercase;
     display: inline-block;
     position: relative;
+    font-size: clamp(0.8rem, 2vw, 1rem); /* Ajuster la taille de la police */
+    white-space: nowrap; /* Empêcher le retour à la ligne */
 }
 
 main li {
@@ -151,23 +153,24 @@ main li {
 .gauche {
     background-color: rgb(255, 190, 92);
     padding: 1rem;
-    font-size: 14px;
+    font-size: clamp(0.7rem, 2vw, 0.9rem); /* Ajuster la taille de la police */
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 50%;
+    margin-bottom: 20px;
 }
 
 .gauche section {
     margin-bottom: 1.5rem;
-    width: 80%;
+    width: 100%;
     text-align: left;
     align-self: center;
 }
 
 .gauche p {
     margin: 0.5rem 0;
-    
-    font-size: max(12px, 0.9em);
+    font-size: clamp(0.6rem, 1.5vw, 0.8rem); /* Ajuster la taille de la police */
 }
 
 .section-tritre-g {
@@ -176,7 +179,7 @@ main li {
 }
 
 .section-tritre-g h2 {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.8rem, 2.5vw, 1.2rem);
     text-transform: uppercase;
     display: inline-block;
     position: relative;
@@ -198,7 +201,8 @@ main li {
 .droite {
     background-color: rgb(251, 251, 251);
     padding: 1rem;
-    font-size: 14px;
+    font-size: clamp(0.7rem, 2vw, 0.9rem); /* Ajuster la taille de la police */
+    width: 50%;
 }
 
 .intro {
@@ -206,17 +210,17 @@ main li {
 }
 
 .intro h1 {
-    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
     line-height: 1.2;
 }
 
 .intro h2 {
-    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-size: clamp(1rem, 3vw, 1.5rem);
     margin-bottom: 0.5rem;
 }
 
 .intro h3 {
-    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(0.8rem, 2vw, 1.2rem);
     color: #333;
 }
 
@@ -227,11 +231,12 @@ main li {
 }
 
 .section-tritre-d h2 {
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.8rem, 2vw, 1rem); /* Ajuster la taille de la police */
     text-transform: uppercase;
     display: inline-block;
     position: relative;
     z-index: 1;
+    white-space: nowrap; /* Empêcher le retour à la ligne */
 }
 
 .fondD {
@@ -247,8 +252,8 @@ main li {
 
 .date-titre-container {
     display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 2rem;
+    grid-template-columns: 60px 1fr; /* Réduire la taille des colonnes sur les petits écrans */
+    gap: 1rem; /* Réduire l'écart entre les colonnes sur les petits écrans */
     margin-bottom: 1rem;
     position: relative;
 }
@@ -257,7 +262,7 @@ main li {
     font-weight: bold;
     color: #333;
     text-align: right;
-    font-size: max(12px, 0.9em);
+    font-size: clamp(0.6rem, 1.5vw, 0.8em); /* Ajuster la taille de la police */
     padding-right: 1rem;
 }
 
@@ -265,7 +270,7 @@ main li {
     font-weight: bold;
     position: relative;
     padding-left: 1.5rem;
-    font-size: max(12px, 0.9em);
+    font-size: clamp(0.6rem, 1.5vw, 0.8em); /* Ajuster la taille de la police */
 }
 
 .titre::before {
@@ -283,9 +288,9 @@ main li {
 }
 
 .dev {
-    padding-left: calc(80px + 3.5rem);
+    padding-left: calc(60px + 2rem); /* Ajuster le padding sur les petits écrans */
     margin-bottom: 1.5rem;
-    font-size: max(12px, 0.9em);
+    font-size: clamp(0.6rem, 1.5vw, 0.8em); /* Ajuster la taille de la police */
 }
 
 .dev ul {
@@ -297,13 +302,14 @@ main li {
     margin-bottom: 0.3rem;
     position: relative;
     padding-left: 15px;
+    font-size: clamp(0.6rem, 1.5vw, 0.8em); /* Ajuster la taille de la police */
 }
 
 /* Barres verticales */
 .barreE, .barreF {
     background-color: rgb(252, 217, 156);
     position: absolute;
-    left: 105px;
+    left: calc(60px + 1rem); /* Ajuster la position de la barre sur les petits écrans */
     width: 3px;
     top: 50px;
     height: 90%;
@@ -316,12 +322,10 @@ main li {
 
 /* Media Queries pour ajuster les espacements */
 @media screen and (min-width: 768px) {
-    .bgHeader {
-        flex-direction: row;
-        justify-content: space-between;
-        max-width: 90%;
+    .gauche, .droite {
+        width: 50%;
     }
-    
+
     .date-titre-container {
         grid-template-columns: 60px 1fr;
         gap: 1.5rem;
@@ -332,13 +336,15 @@ main li {
     }
 
     .barreE, .barreF {
-        left: 69px; 
+        left: calc(60px + 1.5rem); /* Ajuster pour les écrans plus larges */
     }
 }
 
 @media screen and (min-width: 1024px) {
     .bgHeader {
-        padding: 0.5rem 2rem;
+        flex-direction: row;
+        justify-content: space-between;
+        max-width: 90%;
     }
 
     .h_logo {
@@ -355,7 +361,7 @@ main li {
     }
 
     .barreE, .barreF {
-        left: 120px; 
+        left: calc(100px + 1.5rem); /* Ajuster pour les écrans plus larges */
     }
 }
 
