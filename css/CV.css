@@ -57,7 +57,7 @@ header {
 }
 
 header.scrolled {
-    background-color: rgba(51, 51, 51, 0.95);
+    background-color: rgba(51, 51, 51, 0.9);
     backdrop-filter: blur(8px);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
@@ -93,16 +93,31 @@ header.scrolled {
 }
 
 .h_lien a {
-    font-size: clamp(0.6rem, 3vw, 1rem); 
+    font-size: clamp(0.6rem, 3vw, 1.2rem); 
     padding: clamp(0.3rem, 1vw, 0.8rem);
     color: #fff;
     border-radius: 5px;
     transition: transform 0.3s ease;
 }
 
-.h_lien a:hover, .h_lien a.active, .h_lien ul li.active {
+.h_lien a:hover, .h_lien a.active, .h_lien ul li.active{
     background-color: #555;
     text-decoration: underline;
+    transform: scale(1.1);
+}
+
+a {
+    text-decoration: none;
+}
+.h_logo img:hover {
+    transform: scale(1.1);
+}
+
+.h_lien a:hover {
+    background-color: #555;
+    text-decoration: underline;
+}
+.h_lien ul li:hover {
     transform: scale(1.1);
 }
 
@@ -133,16 +148,15 @@ main {
     margin: 20px auto;
     justify-content: center;
     min-height: 100vh;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Ajouter un box-shadow pour ressembler à une page */
-    background-color: #fff; /* Ajouter un fond blanc pour le contraste */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 main h2 {
     text-transform: uppercase;
     display: inline-block;
     position: relative;
-    font-size: clamp(0.8rem, 2vw, 1rem); /* Ajuster la taille de la police */
-    white-space: nowrap; /* Empêcher le retour à la ligne */
+    font-size: clamp(0.8rem, 2vw, 1rem); 
+    white-space: nowrap;
 }
 
 main li {
@@ -153,12 +167,12 @@ main li {
 .gauche {
     background-color: rgb(255, 190, 92);
     padding: 1rem;
-    font-size: clamp(0.7rem, 2vw, 0.9rem); /* Ajuster la taille de la police */
+    font-size: clamp(0.7rem, 2vw, 0.9rem); 
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
-    margin-bottom: 20px;
+    width: 30%;
+ 
 }
 
 .gauche section {
@@ -170,7 +184,7 @@ main li {
 
 .gauche p {
     margin: 0.5rem 0;
-    font-size: clamp(0.6rem, 1.5vw, 0.8rem); /* Ajuster la taille de la police */
+    font-size: clamp(0.6rem, 1.5vw, 0.8rem); 
 }
 
 .section-tritre-g {
@@ -191,18 +205,18 @@ main li {
     height: 12px;
     position: absolute;
     bottom: 8px;
-    left: -2.5%;
+    left: 0;
     right: 0;
     z-index: 0;
-    width: 105%;
+    width: 100%;
 }
 
 /* Partie droite */
 .droite {
     background-color: rgb(251, 251, 251);
     padding: 1rem;
-    font-size: clamp(0.7rem, 2vw, 0.9rem); /* Ajuster la taille de la police */
-    width: 50%;
+    font-size: clamp(0.7rem, 2vw, 0.9rem); 
+    width: 70%;
 }
 
 .intro {
@@ -227,16 +241,15 @@ main li {
 .section-tritre-d {
     position: relative;
     display: inline-block;
-    margin-left: 0;
 }
 
 .section-tritre-d h2 {
-    font-size: clamp(0.8rem, 2vw, 1rem); /* Ajuster la taille de la police */
+    font-size: clamp(0.8rem, 2vw, 1rem); 
     text-transform: uppercase;
     display: inline-block;
     position: relative;
     z-index: 1;
-    white-space: nowrap; /* Empêcher le retour à la ligne */
+    white-space: nowrap;
 }
 
 .fondD {
@@ -244,16 +257,16 @@ main li {
     height: 12px;
     position: absolute;
     bottom: 8px;
-    left: -2.5%;
+    left: 0;
     right: 0;
     z-index: 0;
-    width: 105%;
+    width: 100%;
 }
 
 .date-titre-container {
     display: grid;
-    grid-template-columns: 60px 1fr; /* Réduire la taille des colonnes sur les petits écrans */
-    gap: 1rem; /* Réduire l'écart entre les colonnes sur les petits écrans */
+    grid-template-columns: 60px 1fr; 
+    gap: 1rem; 
     margin-bottom: 1rem;
     position: relative;
 }
@@ -262,7 +275,7 @@ main li {
     font-weight: bold;
     color: #333;
     text-align: right;
-    font-size: clamp(0.6rem, 1.5vw, 0.8em); /* Ajuster la taille de la police */
+    font-size: clamp(0.6rem, 1.5vw, 0.8em); 
     padding-right: 1rem;
 }
 
@@ -270,13 +283,13 @@ main li {
     font-weight: bold;
     position: relative;
     padding-left: 1.5rem;
-    font-size: clamp(0.6rem, 1.5vw, 0.8em); /* Ajuster la taille de la police */
+    font-size: clamp(0.6rem, 1.5vw, 0.8em); 
 }
 
 .titre::before {
     content: '';
     position: absolute;
-    left: -3%;
+    left: -25px;
     top: 50%;
     width: 8px;
     height: 8px;
@@ -288,9 +301,10 @@ main li {
 }
 
 .dev {
-    padding-left: calc(60px + 2rem); /* Ajuster le padding sur les petits écrans */
+    padding-left: 60px;
     margin-bottom: 1.5rem;
-    font-size: clamp(0.6rem, 1.5vw, 0.8em); /* Ajuster la taille de la police */
+    font-size: clamp(0.6rem, 1.5vw, 0.8em); 
+    padding-left: 6.5rem;
 }
 
 .dev ul {
@@ -301,17 +315,16 @@ main li {
 .dev li {
     margin-bottom: 0.3rem;
     position: relative;
-    padding-left: 15px;
-    font-size: clamp(0.6rem, 1.5vw, 0.8em); /* Ajuster la taille de la police */
+    font-size: clamp(0.6rem, 1.5vw, 0.8em);
 }
 
 /* Barres verticales */
 .barreE, .barreF {
     background-color: rgb(252, 217, 156);
     position: absolute;
-    left: calc(60px + 1rem); /* Ajuster la position de la barre sur les petits écrans */
+    left: 54px;
     width: 3px;
-    top: 50px;
+    top: 32px;
     height: 90%;
     border-radius: 15px;
 }
@@ -322,46 +335,47 @@ main li {
 
 /* Media Queries pour ajuster les espacements */
 @media screen and (min-width: 768px) {
-    .gauche, .droite {
-        width: 50%;
-    }
-
-    .date-titre-container {
-        grid-template-columns: 60px 1fr;
-        gap: 1.5rem;
-    }
-
-    .dev {
-        padding-left: calc(60px + 2.5rem);
-    }
-
-    .barreE, .barreF {
-        left: calc(60px + 1.5rem); /* Ajuster pour les écrans plus larges */
-    }
-}
-
-@media screen and (min-width: 1024px) {
     .bgHeader {
         flex-direction: row;
         justify-content: space-between;
         max-width: 90%;
     }
 
+    .date-titre-container {
+        grid-template-columns: 60px 1fr;
+        gap: 1.5rem;
+    }
+    
+    .dev {
+        padding-left: 7rem;
+    }
+
+    .barreE, .barreF {
+        left: 62px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .bgHeader {
+        padding: 0.5rem 2rem;
+    }
+
     .h_logo {
         height: 100px;
         width: 100px;
     }
+
     .date-titre-container {
         grid-template-columns: 100px 1fr;
         gap: 2.5rem;
     }
 
     .dev {
-        padding-left: calc(100px + 4rem);
+        padding-left: 10.5rem;
     }
 
     .barreE, .barreF {
-        left: calc(100px + 1.5rem); /* Ajuster pour les écrans plus larges */
+        left: 117px;
     }
 }
 
