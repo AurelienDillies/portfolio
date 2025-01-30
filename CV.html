@@ -13,6 +13,8 @@
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
      <script src="./js/CV.js" defer></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 
     <!-- Preload des ressources critiques -->
     <link rel="preload" href="./css/CV.css" as="style">
@@ -24,6 +26,27 @@
    <link rel="icon" type="image/svg+xml" href="./image/logo-svg.svg">
    <link rel="apple-touch-icon" href="./image/logo-png.png">
 
+    <style>
+        /* Styles spécifiques pour le PDF */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            header, .h_lien {
+                display: none;
+            }
+            main {
+                margin: 0;
+                padding: 0;
+                box-shadow: none;
+            }
+        }
+        /* Supprimer les marges pour l'impression PDF */
+        @page {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     
@@ -37,13 +60,13 @@
             <nav class="h_lien" aria-label="Navigation principale">
                 <ul>
                     <li><a href="./index.html">Retour au portfolio</a></li>
-                    <li><a href="./image/CV_DILLIES_Aurelien.jpg" target="_blank" download>Télécharger mon CV</a></li>
+                    <li><a href="#" id="download-cv">Télécharger mon CV</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     
-    <main>
+    <main id="cv-content">
         <div class="gauche">
 
             <section class="informations">
@@ -245,10 +268,26 @@
             </section>
 
         </div>
-
-            <!-- <div id="accueil">
-                <img src="./image/CV_DILLIES_Aurelien.jpg" alt="CV d'Aurélien Dillies" style="width: 100%; height: auto;">
-            </div> -->
     </main>
+
+    <script>
+        document.getElementById('download-cv').addEventListener('click', function() {
+            const element = document.querySelector('main'); // Sélectionner uniquement le contenu du <main>
+            const originalHeight = element.style.height;
+            element.style.height = 'auto'; // Ajuster la hauteur pour le téléchargement
+
+            html2canvas(element, { scale: 2 }).then(canvas => {
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const imgWidth = 210;
+                const pageHeight = 297;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+                // Ajuster la hauteur de l'image pour remplir la page
+                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, pageHeight);
+                pdf.save('CV_Aurelien_Dillies.pdf');
+            });
+        });
+    </script>
 </body>
 </html>

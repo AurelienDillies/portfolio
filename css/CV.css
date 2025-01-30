@@ -148,6 +148,7 @@ main {
     margin: 20px auto;
     justify-content: center;
     min-height: 100vh;
+    aspect-ratio: 21/29.7;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -204,7 +205,7 @@ main li {
     background-color: rgb(238, 223, 178);
     height: 12px;
     position: absolute;
-    bottom: 8px;
+    bottom: 5px;
     left: 0;
     right: 0;
     z-index: 0;
@@ -256,7 +257,7 @@ main li {
     background-color: rgb(238, 223, 178);
     height: 12px;
     position: absolute;
-    bottom: 8px;
+    bottom: 3px;
     left: 0;
     right: 0;
     z-index: 0;
