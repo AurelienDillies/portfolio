@@ -178,7 +178,6 @@ main li {
     margin-bottom: 1.5rem;
     width: 100%;
     text-align: left;
-    align-self: center;
 }
 
 .gauche p {
@@ -186,18 +185,29 @@ main li {
     font-size: clamp(1rem, 2.5vw, 1.2rem); 
 }
 
-.section-tritre-g {
+.section-titre-g {
     position: relative;
     display: inline-block;
 }
 
-.section-tritre-g h2 {
+.section-titre-g h2 {
     font-size: clamp(1rem, 3.5vw, 2rem);
     text-transform: uppercase;
     display: inline-block;
     position: relative;
     z-index: 1;
     padding-left: 2.5%;
+}
+
+.centre {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.centre p {
+    flex-grow: 0.17;
 }
 
 .fondG {
@@ -237,14 +247,14 @@ main li {
     font-size: clamp(1rem, 2.7vw, 1.5rem);
 }
 
-.section-tritre-d {
+.section-titre-d {
     position: relative;
     display: inline-block;
     margin-bottom: 20px;
     margin-left: -16px;
 }
 
-.section-tritre-d h2 {
+.section-titre-d h2 {
     font-size: clamp(1rem, 3.5vw, 2rem);
     text-transform: uppercase;
     display: inline-block;
