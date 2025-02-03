@@ -66,7 +66,6 @@ window.addEventListener('scroll', () => {
 // téléchargement du CV
 document.getElementById('download-cv').addEventListener('click', function() {
     const element = document.querySelector('main'); 
-    const originalHeight = element.style.height;
     element.style.height = 'auto'; 
 
     html2canvas(element, { scale: 2 }).then(canvas => {
@@ -74,10 +73,13 @@ document.getElementById('download-cv').addEventListener('click', function() {
         const pdf = new jsPDF('p', 'mm', 'a4');
         const imgWidth = 210;
         const pageHeight = 297;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        
+        // Ajuster la hauteur de l'image pour remplir la page sans déformation
+        const ratio = Math.min(pageHeight / canvas.height, imgWidth / canvas.width);
+        const width = canvas.width * ratio;
+        const height = canvas.height * ratio;
 
-        // Ajuster la hauteur de l'image pour remplir la page
-        pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, pageHeight);
+        pdf.addImage(imgData, 'PNG', 0, 0, width, height);
         pdf.save('CV_Aurelien_Dillies.pdf');
     });
 });

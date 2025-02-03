@@ -321,10 +321,10 @@ main li {
 .titre::before {
     content: '';
     position: absolute;
-    left: -27px;
+    left: -30px;
     top: 50%;
-    width: 13px;
-    height: 13px;
+    width: 20px;
+    height: 20px;
     background-color: rgb(250, 235, 215);
     border: 2px solid rgb(250, 200, 140);
     border-radius: 50%;
@@ -388,7 +388,7 @@ main li {
 
     .barreE, .barreF {
         left: 148px;
-        top: 90px
+        top: 93px
     }
 }
 
