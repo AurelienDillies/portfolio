@@ -392,6 +392,26 @@ main li {
     }
 }
 
+/* Styles spécifiques pour le PDF */
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    header, .h_lien {
+        display: none;
+    }
+    main {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+    }
+}
+/* Supprimer les marges pour l'impression PDF */
+@page {
+    margin: 0;
+}
+
 /* Optimisations de performance */
 img {
     width: 100%;
