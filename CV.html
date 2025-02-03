@@ -270,24 +270,5 @@
         </div>
     </main>
 
-    <script>
-        document.getElementById('download-cv').addEventListener('click', function() {
-            const element = document.querySelector('main'); // Sélectionner uniquement le contenu du <main>
-            const originalHeight = element.style.height;
-            element.style.height = 'auto'; // Ajuster la hauteur pour le téléchargement
-
-            html2canvas(element, { scale: 2 }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const imgWidth = 210;
-                const pageHeight = 297;
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-
-                // Ajuster la hauteur de l'image pour remplir la page
-                pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, pageHeight);
-                pdf.save('CV_Aurelien_Dillies.pdf');
-            });
-        });
-    </script>
 </body>
 </html>

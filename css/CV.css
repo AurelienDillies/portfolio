@@ -142,13 +142,12 @@ a {
 
 main {
     display: flex;
-    flex-direction: row; /* Disposition en ligne */
+    flex-direction: row;
     width: 100%;
     max-width: 1200px;
     margin: 20px auto;
     justify-content: center;
     min-height: 100vh;
-    aspect-ratio: 21/29.7;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -156,7 +155,6 @@ main h2 {
     text-transform: uppercase;
     display: inline-block;
     position: relative;
-    font-size: clamp(0.8rem, 2vw, 1rem); 
     white-space: nowrap;
 }
 
@@ -173,7 +171,7 @@ main li {
     flex-direction: column;
     align-items: center;
     width: 30%;
- 
+    padding-top: 130px;
 }
 
 .gauche section {
@@ -185,7 +183,7 @@ main li {
 
 .gauche p {
     margin: 0.5rem 0;
-    font-size: clamp(0.6rem, 1.5vw, 0.8rem); 
+    font-size: clamp(1rem, 2.5vw, 1.2rem); 
 }
 
 .section-tritre-g {
@@ -194,22 +192,23 @@ main li {
 }
 
 .section-tritre-g h2 {
-    font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+    font-size: clamp(1rem, 3.5vw, 2rem);
     text-transform: uppercase;
     display: inline-block;
     position: relative;
     z-index: 1;
+    padding-left: 2.5%;
 }
 
 .fondG {
     background-color: rgb(238, 223, 178);
-    height: 12px;
+    height: 20px;
     position: absolute;
-    bottom: 5px;
+    bottom: 6px;
     left: 0;
     right: 0;
     z-index: 0;
-    width: 100%;
+    width: 105%;
 }
 
 /* Partie droite */
@@ -225,87 +224,76 @@ main li {
 }
 
 .intro h1 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-size: clamp(2rem, 4.5vw, 3rem);
     line-height: 1.2;
 }
 
 .intro h2 {
-    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-size: clamp(1rem, 3.5vw, 2rem);
     margin-bottom: 0.5rem;
 }
 
 .intro h3 {
-    font-size: clamp(0.8rem, 2vw, 1.2rem);
-    color: #333;
+    font-size: clamp(1rem, 2.7vw, 1.5rem);
 }
 
 .section-tritre-d {
     position: relative;
     display: inline-block;
+    margin-bottom: 20px;
+    margin-left: -16px;
 }
 
 .section-tritre-d h2 {
-    font-size: clamp(0.8rem, 2vw, 1rem); 
+    font-size: clamp(1rem, 3.5vw, 2rem);
     text-transform: uppercase;
     display: inline-block;
     position: relative;
     z-index: 1;
     white-space: nowrap;
+    padding-left: 2.5%;
 }
 
 .fondD {
     background-color: rgb(238, 223, 178);
-    height: 12px;
+    height: 20px;
     position: absolute;
-    bottom: 3px;
+    bottom: 6px;
     left: 0;
     right: 0;
     z-index: 0;
-    width: 100%;
+    width: 105%;
 }
 
 .date-titre-container {
     display: grid;
-    grid-template-columns: 60px 1fr; 
+    grid-template-columns: 130px 1fr;
     gap: 1rem; 
     margin-bottom: 1rem;
     position: relative;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
 }
 
 .date {
     font-weight: bold;
     color: #333;
-    text-align: right;
-    font-size: clamp(0.6rem, 1.5vw, 0.8em); 
     padding-right: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .titre {
     font-weight: bold;
     position: relative;
-    padding-left: 1.5rem;
-    font-size: clamp(0.6rem, 1.5vw, 0.8em); 
-}
-
-.titre::before {
-    content: '';
-    position: absolute;
-    left: -25px;
-    top: 50%;
-    width: 8px;
-    height: 8px;
-    background-color: rgb(255, 235, 200);
-    border: 2px solid rgb(250, 200, 140);
-    border-radius: 50%;
-    transform: translateY(-50%);
-    z-index: 2;
+    padding-left: 1.5rem; 
 }
 
 .dev {
     padding-left: 60px;
     margin-bottom: 1.5rem;
-    font-size: clamp(0.6rem, 1.5vw, 0.8em); 
-    padding-left: 6.5rem;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    padding-left: 11rem;
 }
 
 .dev ul {
@@ -316,17 +304,31 @@ main li {
 .dev li {
     margin-bottom: 0.3rem;
     position: relative;
-    font-size: clamp(0.6rem, 1.5vw, 0.8em);
 }
 
 /* Barres verticales */
+
+.titre::before {
+    content: '';
+    position: absolute;
+    left: -27px;
+    top: 50%;
+    width: 13px;
+    height: 13px;
+    background-color: rgb(250, 235, 215);
+    border: 2px solid rgb(250, 200, 140);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
 .barreE, .barreF {
     background-color: rgb(252, 217, 156);
     position: absolute;
-    left: 54px;
+    left: 124px;
     width: 3px;
-    top: 32px;
-    height: 90%;
+    top: 85px;
+    height: 85%;
     border-radius: 15px;
 }
 
@@ -343,16 +345,16 @@ main li {
     }
 
     .date-titre-container {
-        grid-template-columns: 60px 1fr;
         gap: 1.5rem;
     }
     
     .dev {
-        padding-left: 7rem;
+        padding-left: 11.5rem;
     }
 
     .barreE, .barreF {
-        left: 62px;
+        left: 132px;
+        top: 97px;
     }
 }
 
@@ -367,16 +369,16 @@ main li {
     }
 
     .date-titre-container {
-        grid-template-columns: 100px 1fr;
         gap: 2.5rem;
     }
 
     .dev {
-        padding-left: 10.5rem;
+        padding-left: 12.5rem;
     }
 
     .barreE, .barreF {
-        left: 117px;
+        left: 148px;
+        top: 93px
     }
 }
 
