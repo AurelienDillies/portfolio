@@ -68,18 +68,18 @@ document.getElementById('download-cv').addEventListener('click', function() {
     const element = document.querySelector('main'); 
     element.style.height = 'auto'; 
 
-    html2canvas(element, { scale: 2 }).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const imgWidth = 210;
-        const pageHeight = 297;
-        
-        // Ajuster la hauteur de l'image pour remplir la page sans déformation
-        const ratio = Math.min(pageHeight / canvas.height, imgWidth / canvas.width);
-        const width = canvas.width * ratio;
-        const height = canvas.height * ratio;
-
-        pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+    html2canvas(element, { scale: 1, background: '#fff', useCORS: true }).then(canvas => {
+        // Largeur A4 en mm
+        const pdfWidth = 210;
+        // Conversion mm -> px à 96dpi
+        const pxPerMm = 96 / 25.4;
+        const a4WidthPx = Math.floor(pdfWidth * pxPerMm);
+        // Calculer la hauteur du PDF en mm selon la hauteur du canvas
+        const pdfHeight = (canvas.height / canvas.width) * pdfWidth;
+        const pdf = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]);
+        // Redimensionner l'image pour remplir toute la largeur
+        const imgData = canvas.toDataURL('image/jpeg', 0.8); // JPEG compressé
+        pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
         pdf.save('CV_Aurelien_Dillies.pdf');
     });
 });
