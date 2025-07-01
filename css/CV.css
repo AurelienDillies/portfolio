@@ -210,6 +210,24 @@ main li {
     flex-grow: 0.17;
 }
 
+.informations p {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    margin: 0.5rem 0;
+}
+
+.informations i {
+    min-width: 1.2em;
+    text-align: center;
+    color: #333;
+    opacity: 0.8;
+}
+
+.fa-phone {
+    transform: rotate(90deg);
+}
+
 .fondG {
     background-color: rgb(238, 223, 178);
     height: 20px;
@@ -314,22 +332,6 @@ main li {
 .dev li {
     margin-bottom: 0.3rem;
     position: relative;
-}
-
-/* Alignement propre des icônes et texte dans la section Informations */
-.informations p {
-    display: flex;
-    align-items: center;
-    gap: 0.6em;
-    margin: 0.5rem 0;
-}
-
-.informations i {
-    min-width: 1.2em;
-    text-align: center;
-    color: #333;
-    opacity: 0.8;
-    /* Garde la taille de police héritée du texte */
 }
 
 /* Barres verticales */
