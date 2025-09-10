@@ -210,17 +210,22 @@ main li {
     flex-grow: 0.17;
 }
 
-.informations p {
+.informations p, a {
     display: flex;
     align-items: center;
     gap: 0.6em;
     margin: 0.5rem 0;
 }
 
+.informations a {
+    color: black;
+    text-decoration-line: underline;
+}
+
 .informations i {
     min-width: 1.2em;
     text-align: center;
-    color: #333;
+    color: #111;
     opacity: 0.8;
 }
 
