@@ -117,22 +117,6 @@ a {
     background-color: #555;
     text-decoration: underline;
 }
-.h_lien ul li:hover {
-    transform: scale(1.1);
-}
-
-a {
-    text-decoration: none;
-}
-
-.h_logo img:hover {
-    transform: scale(1.1);
-}
-
-.h_lien a:hover {
-    background-color: #555;
-    text-decoration: underline;
-}
 
 .h_lien ul li:hover {
     transform: scale(1.1);
@@ -149,6 +133,7 @@ main {
     justify-content: center;
     min-height: 100vh;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background: white;
 }
 
 main h2 {
@@ -171,7 +156,7 @@ main li {
     flex-direction: column;
     align-items: center;
     width: 30%;
-    padding-top: 130px;
+    padding-top: 30px;
 }
 
 .gauche section {
@@ -210,7 +195,21 @@ main li {
     flex-grow: 0.17;
 }
 
-.informations p, a {
+.portfolio-image {
+    margin-bottom: 1rem;
+}
+
+.portfolio-image img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    max-height: 180px;
+    object-fit: contain;
+    margin-top: 0.5rem;
+}
+
+.informations p,
+.informations a {
     display: flex;
     align-items: center;
     gap: 0.6em;
@@ -221,6 +220,9 @@ main li {
     color: black;
     text-decoration-line: underline;
 }
+.informations a.phone-link {
+    text-decoration: none;
+}
 
 .informations i {
     min-width: 1.2em;
@@ -229,7 +231,7 @@ main li {
     opacity: 0.8;
 }
 
-.fa-phone {
+.informations .fa-phone {
     transform: rotate(90deg);
 }
 
@@ -361,8 +363,9 @@ main li {
     left: 124px;
     width: 3px;
     top: 85px;
-    height: 85%;
+    height: calc(100% - 85px);
     border-radius: 15px;
+    pointer-events: none;
 }
 
 .ExpPro, .Formations {
@@ -425,29 +428,83 @@ main li {
     }
 }
 
-/* Styles spécifiques pour le PDF */
-@media print {
-    body {
-        margin: 0;
-        padding: 0;
-    }
-    header, .h_lien {
-        display: none;
-    }
-    main {
-        margin: 0;
-        padding: 0;
-        box-shadow: none;
-    }
-}
-/* Supprimer les marges pour l'impression PDF */
-@page {
-    margin: 0;
-}
-
 /* Optimisations de performance */
 img {
     width: 100%;
     height: auto;
     will-change: transform;
+}
+
+
+/* Loader pour génération PDF */
+#pdf-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    color: white;
+}
+
+#pdf-loader .spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+#pdf-loader p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Styles pour la génération PDF - une seule page sans bordure */
+@media print {
+    body, html {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    main {
+        box-shadow: none !important;
+        margin: 0 !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+        page-break-before: avoid !important;
+    }
+
+    header {
+        display: none !important;
+    }
+
+    * {
+        page-break-inside: avoid !important;
+    }
+}
+
+/* Classes pour forcer le contenu sur une page */
+.pdf-generation {
+    transform: scale(0.75);
+    transform-origin: top left;
+    width: 133.33%;
+}
+
+.pdf-generation main {
+    box-shadow: none;
+    margin: 0;
 }
