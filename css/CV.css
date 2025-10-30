@@ -208,18 +208,24 @@ main li {
     margin-top: 0.5rem;
 }
 
+/* Style fixe pour le QR code */
+.qr-code {
+    width: 180px !important;
+    height: 180px !important;
+    max-width: 180px !important;
+    max-height: 180px !important;
+    object-fit: contain !important;
+}
+
 .informations p,
 .informations a {
     display: flex;
     align-items: center;
     gap: 0.6em;
     margin: 0.5rem 0;
+    color: black;
 }
 
-.informations a {
-    color: black;
-    text-decoration-line: underline;
-}
 .informations a.phone-link {
     text-decoration: none;
 }
