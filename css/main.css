@@ -474,26 +474,6 @@ p {
     margin-bottom: 1rem;
 }
 
-#CV {
-    display: inline-block;
-    background-color: #0066cc;
-    color: #fff;
-    padding: clamp(0.4rem, 2vw, 1rem); 
-    border-radius: 5px;
-    margin-top: 1rem;
-    transition: background-color 0.3s, transform 0.3s;
-    font-size: clamp(0.7rem, 2.5vw, 1rem); 
-}
-
-#CV:hover {
-    background-color: #0052a3;
-    text-decoration: none;
-    transform: scale(1.05);
-}
-#CV:focus {
-    transform: scale(1.1);
-}
-
 /* carousel */
 .carousel-slide {
     min-width: 100%;

@@ -104,6 +104,7 @@
                     <li><a href="#projets">Mes Projets</a></li>
                     <li><a href="#a_propos">À Propos</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="./CV.html">Accéder à mon CV</a></li>
                 </ul>
             </nav>
         </div>
@@ -175,6 +176,21 @@
                 </div>
             </div>
         </section>
+
+          <!-- Modales pour les projets -->
+    <div id="modal-container" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-labelledby="modal-title">
+            <button class="fermer-modal" aria-label="Fermer la fenêtre">Fermer</button>
+            <h3 id="modal-title"></h3>
+            <img id="modal-image" src="" alt="" loading="lazy" decoding="async">
+            <p id="modal-description"></p>
+            <div class="modal-technologies">
+                <h4>Technologies utilisées :</h4>
+                <ul id="modal-tech-list"></ul>
+            </div>
+            <a id="modal-link" href="" target="_blank" rel="noopener noreferrer">Voir le projet</a>
+        </div>
+    </div>
 
         <section id="a_propos">
             <div class="section-content">
@@ -279,7 +295,6 @@
                     </div>
                 </div>
 
-                <a href="./CV.html" id="CV">Accéder à mon CV</a>
             </div>
         </section>
 
@@ -293,6 +308,11 @@
                 <li>
                     <a href="https://github.com/AurelienDillies" target="_blank" rel="noopener noreferrer" aria-label="Mon profil GitHub (s'ouvre dans un nouvel onglet)">
                         Mon GitHub
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/aur%C3%A9lien-dillies-0144aa29a/" target="_blank" rel="noopener noreferrer" aria-label="Mon profil LinkedIn (s'ouvre dans un nouvel onglet)">
+                        Mon LinkedIn
                     </a>
                 </li>
                 <li>Mon Email : 
@@ -310,19 +330,5 @@
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 
-    <!-- Modales pour les projets -->
-    <div id="modal-container" class="modal" aria-hidden="true">
-        <div class="modal-content" role="dialog" aria-labelledby="modal-title">
-            <button class="fermer-modal" aria-label="Fermer la fenêtre">Fermer</button>
-            <h3 id="modal-title"></h3>
-            <img id="modal-image" src="" alt="" loading="lazy" decoding="async">
-            <p id="modal-description"></p>
-            <div class="modal-technologies">
-                <h4>Technologies utilisées :</h4>
-                <ul id="modal-tech-list"></ul>
-            </div>
-            <a id="modal-link" href="" target="_blank" rel="noopener noreferrer">Voir le projet</a>
-        </div>
-    </div>
 </body>
 </html>
