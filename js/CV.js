@@ -72,40 +72,78 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Fonction pour télécharger le contenu du main en PDF
+    // Fonction pour télécharger le CV au format A4
     const downloadButton = document.getElementById('download-cv');
     if (downloadButton) {
         downloadButton.addEventListener('click', function() {
             showLoader(true);
-            
-            const element = document.querySelector('main'); 
-            if (!element) {
-                console.error('Element main non trouvé');
+
+            function failPdfGeneration(message, error) {
+                if (error) {
+                    console.error('Erreur lors de la génération du PDF:', error);
+                } else {
+                    console.error('Erreur lors de la génération du PDF:', message);
+                }
                 showLoader(false);
+                alert(message);
+            }
+
+            const element = document.querySelector('#cv-content');
+            if (!element) {
+                failPdfGeneration('Le contenu du CV est introuvable.');
                 return;
             }
 
-            element.style.height = 'auto'; 
+            if (typeof html2canvas !== 'function' || typeof jsPDF !== 'function') {
+                failPdfGeneration('Les bibliothèques nécessaires à la génération du PDF ne sont pas chargées.');
+                return;
+            }
 
-            html2canvas(element, { 
-                scale: 1, 
-                backgroundColor: '#fff', 
-                useCORS: true 
-            }).then(canvas => {
-                const pdfWidth = 210;
-                const pxPerMm = 96 / 25.4;
-                const a4WidthPx = Math.floor(pdfWidth * pxPerMm);
-                const pdfHeight = (canvas.height / canvas.width) * pdfWidth;
-                const pdf = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]);
-                const imgData = canvas.toDataURL('image/jpeg', 0.8);
-                pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-                pdf.save('CV_Aurelien_Dillies.pdf');
-                showLoader(false);
-            }).catch(error => {
-                console.error('Erreur lors de la génération du PDF:', error);
-                showLoader(false);
-                alert('Erreur lors de la génération du PDF');
-            });
+            try {
+                document.body.classList.add('pdf-export');
+
+                html2canvas(element, {
+                    scale: 1,
+                    backgroundColor: '#fff',
+                    useCORS: true,
+                    onrendered: function(canvas) {
+                        try {
+                            if (!canvas || canvas.width === 0 || canvas.height === 0) {
+                                document.body.classList.remove('pdf-export');
+                                failPdfGeneration('La capture du CV est vide.');
+                                return;
+                            }
+
+                            const a4Ratio = 210 / 297;
+                            const captureRatio = canvas.width / canvas.height;
+                            if (Math.abs(captureRatio - a4Ratio) > 0.01) {
+                                document.body.classList.remove('pdf-export');
+                                failPdfGeneration('Les proportions de la capture ne correspondent pas au format A4.');
+                                return;
+                            }
+
+                            const imgData = canvas.toDataURL('image/jpeg', 0.8);
+                            if (!imgData || imgData.length <= 'data:image/jpeg;base64,'.length) {
+                                document.body.classList.remove('pdf-export');
+                                failPdfGeneration('La capture du CV est vide.');
+                                return;
+                            }
+
+                            const pdf = new jsPDF('p', 'mm', 'a4');
+                            pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
+                            pdf.save('CV_Aurelien_Dillies.pdf');
+                            document.body.classList.remove('pdf-export');
+                            showLoader(false);
+                        } catch (error) {
+                            document.body.classList.remove('pdf-export');
+                            failPdfGeneration('Impossible de générer le PDF du CV.', error);
+                        }
+                    }
+                });
+            } catch (error) {
+                document.body.classList.remove('pdf-export');
+                failPdfGeneration('Impossible de capturer le CV.', error);
+            }
         });
     }
 });
